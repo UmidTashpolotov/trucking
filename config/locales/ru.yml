@@ -1,0 +1,11 @@
+ru:
+  hello: "Привет, мир"
+  signin_as_driver: "Войти как водитель"
+  become_driver: "Стать перевозчиком"
+  sign_up: "Зарегистрироваться"
+  sign_in: "Войти на сайт"
+  some_options: "Какие-то опции"
+  action: "Действие"
+  another_action: "Другое действие"
+  something_else: "Еще что-нибудь"
+  exit: "Выход"
