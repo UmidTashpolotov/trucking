@@ -1,7 +1,17 @@
+<% if @user.errors.any? %>      
+<%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:         
+	<% @user.errors.full_messages.each do |msg| %>      
+	<%= msg %>    
+	<% end %>
+<% end %>
+
 <%= simple_form_for ([:admin, @user]) do |f| %>
+<%= f.input :email %>
 <%= f.input :name  %>
 <%= f.input :surname %>
 <%= f.input :phone %>
+<%= f.input :password %>
+<%= f.input :password_confirmation %>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
