@@ -7,13 +7,13 @@ When(/^нажимаю кнопку Add users$/) do
 end
 
 When(/^на странице создания пользователя ввожу данные$/) do |table|
-  within ("#new_user") do
+  within("#new_user") do
     fill_in('Email',                      with: table.hashes[0][:email])
     fill_in('Name',                       with: table.hashes[0][:name])
     fill_in('Surname',                    with: table.hashes[0][:surname])
     fill_in('Phone',                      with: table.hashes[0][:phone])
     fill_in('Password',                   with: table.hashes[0][:password])
-    fill_in('Password confirmation',      with: table.hashes[0][:password_confiramtion])
+    fill_in('Password confirmation',      with: table.hashes[0][:password_confirmation])
   end
 end
 
@@ -30,13 +30,13 @@ When(/^нажимаю кнопку Edit у первого водителя$/) do
 end
 
 When(/^введу новые данные$/) do |table|
-  within ("#edit_user_1") do
+  within("#edit_user_1") do
     fill_in('Email',                      with: table.hashes[0][:email])
     fill_in('Name',                       with: table.hashes[0][:name])
     fill_in('Surname',                    with: table.hashes[0][:surname])
     fill_in('Phone',                      with: table.hashes[0][:phone])
     fill_in('Password',                   with: table.hashes[0][:password])
-    fill_in('Password confirmation',      with: table.hashes[0][:password_confiramtion])
+    fill_in('Password confirmation',      with: table.hashes[0][:password_confirmation])
   end
 end
 
@@ -45,5 +45,30 @@ When(/^я нужму кнопку Update User$/) do
 end
 
 When(/^я увижу измененого водителя "([^"]*)" на странице всех водителей$/) do |name|
-  assert page.has_content?(name) 
+  assert page.has_content?(name)
+end
+
+When(/^я захожу на главную страницу$/) do
+  visit('/')
+end
+
+When(/^нажимаю кнопку Sign up$/) do
+  find(:xpath, '//*[@id="navbar-collapse"]/ul[2]/a[1]').click
+end
+
+When(/^на странице регистрации ввожу данные$/) do |table|
+  @email = table.hashes[0][:email]
+  within("#new_user") do
+    fill_in('Email',                      with: table.hashes[0][:email])
+    fill_in('Password',                   with: table.hashes[0][:password])
+    fill_in('user_password_confirmation', with: table.hashes[0][:password_confirmation])
+  end
+end
+
+When(/^я нажму кнопку Sign up$/) do
+  click_button 'Sign up'
+end
+
+When(/^увижу свой email "([^"]*)" в навбаре$/) do |email|
+  assert page.has_content?(email)
 end
