@@ -47,3 +47,14 @@ admin = User.create(
 	email: 'admin@mail.com', 
 	password: 'qweqwe', 
 	password_confirmation: 'qweqwe')
+
+
+  user = User.first
+
+  5.times do |i=1|
+    Order.create!(
+      about: 'order' + "#{i}", 
+      status: 'new', 
+      user: user)
+    i += 1
+  end
