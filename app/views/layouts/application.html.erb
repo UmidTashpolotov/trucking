@@ -10,6 +10,18 @@
 
   <body>
     <%= render 'layouts/application/navbar' %>
+    
+    <% if user_signed_in? %>
+      <% if current_user.role == 'customer' %>
+        <%= render 'users/customer' %>
+      <% elsif current_user.role == 'worker' %>
+        <%= render 'users/worker' %>
+      <% end %>
+    <% else %>
+      <h1>У НАС ВСЕ ОК</h1>
+    <% end %>
+
+    
     <%= yield %>
   </body>
 </html>

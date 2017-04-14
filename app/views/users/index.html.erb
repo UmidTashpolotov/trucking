@@ -1,9 +1,0 @@
-<% if user_signed_in? %>
-	<% if current_user.role == 'customer' %>
-		<%= render 'customer' %>
-	<% elsif current_user.role == 'worker' %>
-	  <%= render 'worker' %>
-	<% end %>
-<% else %>
-	<h1>У НАС ВСЕ ОК</h1>
-<% end %>
