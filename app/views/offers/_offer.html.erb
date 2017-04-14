@@ -1,22 +1,24 @@
-<div class="container">
-  <div class="row">
-      <div class="col-md-7">
-        <div class="page-header">
-        </div> 
-         <div class="comments-list">
-             <div class="media">
-                 <p class="pull-right"><small>5 days ago</small></p>
-                  <a class="media-left" href="#">
-                    <img src="http://lorempixel.com/40/40/people/1/">
-                  </a>
-                  <div class="media-body">
-                      
-                    <h4 class="media-heading user_name"><%= offer.user.name%></h4>
-                      <%= offer.about %>                              
-                    <p><small><a href="">Link</a> - <a href="">Share</a></small></p>
-                  </div>
-                </div>
-         </div>                    
+<div class="row">
+  <div class="col-md-7">
+    <div class="page-header">
+    </div>
+    <div class="comments-list">
+      <div class="media">
+        <p class="pull-right">
+          <small>5 days ago</small>
+        </p>
+        <a class="media-left" href="#">
+          <img src="http://lorempixel.com/40/40/people/1/">
+        </a>
+        <div class="media-body">
+
+          <h4 class="media-heading user_name"><%= offer.user.name %></h4>
+          <%= offer.about %>
+          <p>
+            <small><a href="">Link</a> - <a href="">Share</a></small>
+          </p>
+        </div>
       </div>
+    </div>
   </div>
 </div>

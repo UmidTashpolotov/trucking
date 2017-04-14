@@ -1,24 +1,24 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        	<div class="well">
-        		<h2 class="text-warning">ЗАКАЗ</h2>
-        		<p><span class="label label-success"><%= @order.status %></span></p>
-        		<ul>
-        			<li>Откуда: ----</li>
-        			<li>Куда:   -----</li>
-        			<li>Что:    -----</li>
-                    <li>Цена:   -----</li>
-        		</ul>          
-        		<p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
-        		<hr>
-                    <% if current_user.role == 'worker' %>
-                        <%= render 'offers/new', order: @order %>
-                    <% end %>
-        		<hr>
-                    <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
-                    <%= render @order.offers.all.reverse %>
-        	</div>
-        </div>
-	</div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well">
+        <h2 class="text-warning">ЗАКАЗ</h2>
+        <p><span class="label label-success"><%= @order.status %></span></p>
+        <ul>
+          <li>Откуда: ----</li>
+          <li>Куда: -----</li>
+          <li>Что: -----</li>
+          <li>Цена: -----</li>
+        </ul>
+        <p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
+        <hr>
+        <% if current_user.role == 'worker' %>
+            <%= render 'offers/new', order: @order %>
+        <% end %>
+        <hr>
+        <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
+        <%= render @order.offers.all.reverse %>
+      </div>
+    </div>
+  </div>
 </div>
