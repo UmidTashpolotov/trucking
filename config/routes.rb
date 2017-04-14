@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'users/show/:id' => 'users#show', as: "users_show"
   devise_for :users
   resources :orders, only: [:show, :new, :create]
   resources :offers, only: [:create]
