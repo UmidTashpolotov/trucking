@@ -1,0 +1,13 @@
+<% if @order.errors.any? %>
+    <%= pluralize(@order.errors.count, "error") %> prohibited this article from being saved:
+    <% @order.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+<% end %>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.input :about %>
+  <div class="form-actions">
+    <%= f.submit 'Создать заказ', class: "btn btn-default" %>
+  </div>
+<% end %>
