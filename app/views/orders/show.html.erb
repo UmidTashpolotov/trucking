@@ -12,8 +12,12 @@
         		</ul>          
         		<p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
         		<hr>
+                    <% if current_user.role == 'worker' %>
+                        <%= render 'offers/new', order: @order %>
+                    <% end %>
         		<hr>
-        		<p><a class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i> ПРИНЯТЬ</a></p>
+                    <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
+                    <%= render @order.offers.all.reverse %>
         	</div>
         </div>
 	</div>
