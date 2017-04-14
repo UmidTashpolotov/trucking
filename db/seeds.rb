@@ -1,24 +1,24 @@
 3.times do |i=1|
   customer = User.create!(
-  	name: 'User' + "#{i}", 
-  	surname: 'Userov' + "#{i}", 
+  	name: Faker::Name.first_name,
+  	surname: Faker::Name.last_name,
   	phone: '0555 555 555', 
   	role: 'customer', 
-  	email: 'customer@mail.com' + "#{i}", 
+  	email: 'customer' + "#{i}" + '@mail.com',
   	password: 'qweqwe', 
   	password_confirmation: 'qweqwe')
 
   order = Order.create!(
-  	about: 'order' + "#{i}", 
+  	about: Faker::Lorem.sentence,
   	status: 'new', 
   	user: customer)
 
   worker = User.create!(
-  	name: 'User' + "#{i}", 
-  	surname: 'Userov' + "#{i}", 
+  	name: Faker::Name.first_name,
+  	surname: Faker::Name.last_name,
   	phone: '0555 555 555', 
   	role: 'worker', 
-  	email: 'worker@mail.com' + "#{i}", 
+  	email: 'worker' + "#{i}" + '@mail.com',
   	password: 'qweqwe', 
   	password_confirmation: 'qweqwe')
 
@@ -32,7 +32,7 @@
 
   Offer.create!(
   	status: 'new', 
-  	about: 'offer' + "#{i}", 
+  	about: Faker::Lorem.paragraphs,
   	user: worker, 
   	order: order)
 
@@ -53,8 +53,8 @@ admin = User.create(
 
   5.times do |i=1|
     Order.create!(
-      about: 'order' + "#{i}", 
-      status: 'new', 
+      about: Faker::Lorem.sentence,
+      status: 'new',
       user: user)
     i += 1
   end
