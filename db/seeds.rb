@@ -10,7 +10,8 @@ cargos = %w(Кофе Орехи Арбузы Лес Топливо)
   	role: 'customer', 
   	email: 'customer' + "#{i}" + '@mail.com',
   	password: 'qweqwe', 
-  	password_confirmation: 'qweqwe')
+  	password_confirmation: 'qweqwe',
+		active: true)
 
   order = Order.create!(
   	about: Faker::Lorem.sentence,
@@ -28,7 +29,9 @@ cargos = %w(Кофе Орехи Арбузы Лес Топливо)
   	role: 'worker',
   	email: 'worker' + "#{i}" + '@mail.com',
   	password: 'qweqwe',
-  	password_confirmation: 'qweqwe')
+  	password_confirmation: 'qweqwe',
+  	active: true)
+
 
   Document.create!(
   	title: 'pasport' + "#{i}",
