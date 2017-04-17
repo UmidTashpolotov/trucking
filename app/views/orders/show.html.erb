@@ -5,12 +5,12 @@
         <h2 class="text-warning">ЗАКАЗ</h2>
         <p><span class="label label-success"><%= @order.status %></span></p>
         <ul>
-          <li>Откуда: ----</li>
-          <li>Куда: -----</li>
-          <li>Что: -----</li>
-          <li>Цена: -----</li>
+          <li>Откуда: <%= @order.from_city %></li>
+          <li>Куда:<%= @order.to_city %></li>
+          <li>Что: <%= @order.cargo %></li>
+          <li>Цена: <%= @order.price %></li>
         </ul>
-        <p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
+        <p>Дополнительно: <%= @order.about %></p>
         <%= link_to 'Удалить заказ', order_path(@order), method: 'delete' if @order.user == current_user %>
         <hr>
         <% if current_user.role == 'worker' %>

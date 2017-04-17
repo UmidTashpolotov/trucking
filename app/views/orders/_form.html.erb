@@ -6,6 +6,10 @@
 <% end %>
 
 <%= simple_form_for @order do |f| %>
+  <%= f.input :from_city %>
+  <%= f.input :to_city %>
+  <%= f.input :cargo %>
+  <%= f.input :price %>
   <%= f.input :about %>
   <div class="form-actions">
     <%= f.submit 'Создать заказ', class: "btn btn-default" %>

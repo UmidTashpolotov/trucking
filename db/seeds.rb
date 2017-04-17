@@ -1,4 +1,8 @@
-3.times do |i=1|
+prices = [10000, 150000, 25000, 300000, 50000]
+currency = %w($ с ₽ тңг)
+cargos = %w(Кофе Орехи Арбузы Лес Топливо)
+
+5.times do |i|
   customer = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
@@ -10,33 +14,36 @@
 
   order = Order.create!(
   	about: Faker::Lorem.sentence,
-  	status: 'new', 
-  	user: customer)
+  	status: 'new',
+    from_city: Faker::Address.country + '/' + Faker::Address.city,
+    to_city: Faker::Address.country + '/' + Faker::Address.city,
+    price: prices.sample.to_s + currency.sample,
+    user: customer,
+    cargo: cargos.sample)
 
   worker = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
-  	phone: '0555 555 555', 
-  	role: 'worker', 
+  	phone: '0555 555 555',
+  	role: 'worker',
   	email: 'worker' + "#{i}" + '@mail.com',
-  	password: 'qweqwe', 
+  	password: 'qweqwe',
   	password_confirmation: 'qweqwe')
 
   Document.create!(
-  	title: 'pasport' + "#{i}", 
+  	title: 'pasport' + "#{i}",
   	user: worker)
 
   Car.create!(
-  	about: 'marka' + "#{i}", 
-  	user: worker)  
+  	about: 'marka' + "#{i}",
+  	user: worker)
 
   Offer.create!(
-  	status: 'new', 
+  	status: 'new',
   	about: Faker::Lorem.paragraphs,
-  	user: worker, 
+  	user: worker,
   	order: order)
 
-  i += 1
 end
 
 admin = User.create(
@@ -47,14 +54,3 @@ admin = User.create(
 	email: 'admin@mail.com', 
 	password: 'qweqwe', 
 	password_confirmation: 'qweqwe')
-
-
-  user = User.first
-
-  5.times do |i=1|
-    Order.create!(
-      about: Faker::Lorem.sentence,
-      status: 'new',
-      user: user)
-    i += 1
-  end
