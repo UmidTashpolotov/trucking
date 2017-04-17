@@ -23,6 +23,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy if @order.user == current_user
+    redirect_to root_path
+  end
+
   private
 
   def order_params

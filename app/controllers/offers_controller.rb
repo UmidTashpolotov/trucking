@@ -15,7 +15,7 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
-    @offer.update(offer_params)
+    @offer.update(offer_params) if @offer.user == current_user
     redirect_to order_path(@offer.order)
   end
 

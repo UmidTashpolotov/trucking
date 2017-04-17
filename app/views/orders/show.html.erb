@@ -11,6 +11,7 @@
           <li>Цена: -----</li>
         </ul>
         <p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
+        <%= link_to 'Удалить заказ', order_path(@order), method: 'delete' if @order.user == current_user %>
         <hr>
         <% if current_user.role == 'worker' %>
             <%= render 'offers/form', order: @order %>
