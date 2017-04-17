@@ -18,7 +18,7 @@
 		        <% if Order.all.empty? %>
 		           <h1> ПОКА НЕТ ЗАКАЗОВ  </h1>
 		        <% else %>
-		          <%= render Order.all %>
+		          <%= render Order.all.reverse %>
 		        <% end %>
 		    </div>
 		  </div>

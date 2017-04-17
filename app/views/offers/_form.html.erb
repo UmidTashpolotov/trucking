@@ -1,0 +1,22 @@
+<%= simple_form_for(@offer) do |f| %>
+    <div class="form-group">
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+
+    <div class="form-group">
+      <%= f.hidden_field :order_id, value: order.id %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :about %>
+    </div>
+
+    <div class="form-group">
+      <%= f.hidden_field :status, value: 'new' %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.submit "Отправить", class: "btn btn-primary btn-block btn-lg" %>
+    </div>
+<% end %>

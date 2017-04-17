@@ -13,7 +13,7 @@
         <p>ОПИСАНИЕ, ДОПОЛНЕНИЕ ".....,"</p>
         <hr>
         <% if current_user.role == 'worker' %>
-            <%= render 'offers/new', order: @order %>
+            <%= render 'offers/form', order: @order %>
         <% end %>
         <hr>
         <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>

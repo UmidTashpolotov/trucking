@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+    @offer = Offer.new
   end
 
   def new
