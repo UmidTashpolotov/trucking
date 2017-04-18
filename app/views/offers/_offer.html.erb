@@ -16,8 +16,8 @@
           <%= offer.about %>
           <p>
             <small>
-              <%= link_to 'удалить', offer_path(offer), method: 'delete' %>
-              <%= link_to 'изменить', edit_offer_path(offer) %>
+              <%= link_to 'удалить', offer_path(offer), method: 'delete' if can? :destroy, offer %>
+              <%= link_to 'изменить', edit_offer_path(offer) if can? :update, offer %>
             </small>
           </p>
         </div>

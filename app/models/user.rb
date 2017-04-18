@@ -8,4 +8,17 @@ class User < ApplicationRecord
   has_many :documents
   has_many :offers
   has_many :orders
+
+  def admin?
+    self.role == 'admin'
+  end
+
+  def worker?
+    self.role == 'worker'
+  end
+
+  def customer?
+    self.role == 'customer'
+  end
+
 end

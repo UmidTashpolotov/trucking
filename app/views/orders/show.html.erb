@@ -11,14 +11,14 @@
           <li>Цена: <%= @order.price %></li>
         </ul>
         <p>Дополнительно: <%= @order.about %></p>
-        <%= link_to 'Удалить заказ', order_path(@order), method: 'delete' if @order.user == current_user %>
+        <%= link_to 'Удалить заказ', order_path(@order), method: 'delete' if can? :destroy, @order %>
         <hr>
-        <% if current_user.role == 'worker' && @order.offers.where(user: current_user).empty? %>
+        <% if can? :create, @offer and @order.offers.where(user: current_user).empty? %>
             <%= render 'offers/form', order: @order %>
         <% end %>
         <hr>
         <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
-        <% if current_user.role == 'customer' %>
+        <% if can? :read, @offer %>
             <%= render @order.offers %>
         <% elsif current_user.role == 'worker' %>
             <%= render  @order.offers.where(user: current_user)%>
