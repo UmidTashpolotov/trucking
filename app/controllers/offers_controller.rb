@@ -30,7 +30,26 @@ class OffersController < ApplicationController
     redirect_to :back
   end
 
+  def accept
+    authorize! :accept, @offer
+    offer = Offer.find(params[:id])
+    offer.accept
+    offer.order.status = "in progress"
+    offer.order.save
+    redirect_to :back
+  end
+
+  def reject
+    authorize! :reject, @offer
+    offer = Offer.find(params[:id])
+    offer.reject
+    offer.order.status = "new"
+    offer.order.save
+    redirect_to :back
+  end
+
   private
+
   def offer_params
     params.require(:offer).permit(:status, :about, :user_id, :order_id)
   end

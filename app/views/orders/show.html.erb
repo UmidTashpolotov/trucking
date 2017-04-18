@@ -26,7 +26,11 @@
         <hr>
         <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
         <% if can? :read, @offer %>
-            <%= render @order.offers %>
+            <% if @order.status =="new" %>
+                <%= render @order.offers %>
+            <% else %>
+                <%= render @order.selected_offer %>
+            <% end %>
         <% elsif current_user.role == 'worker' %>
             <%= render  @order.offers.where(user: current_user)%>
         <% end %>

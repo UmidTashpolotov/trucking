@@ -7,6 +7,8 @@ class Ability
       can :manage, :all
     elsif user.customer?
       can :read, Offer
+      can :accept, Offer
+      can :reject, Offer
       can :read, Order do |order|
         order.user == user
       end

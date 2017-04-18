@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-12">
     <div class="page-header">
     </div>
     <div class="comments-list">
@@ -14,12 +14,19 @@
 
           <h4 class="media-heading user_name"><%= offer.user.name %></h4>
           <%= offer.about %>
+          <%= offer.accepted %>
           <p>
             <small>
-              <%= link_to 'удалить', offer_path(offer), method: 'delete' if can? :destroy, offer %>
-              <%= link_to 'изменить', edit_offer_path(offer) if can? :update, offer %>
+              <%= link_to 'Удалить', offer_path(offer), method: 'delete' if can? :destroy, offer %>
+              <%= link_to 'Изменить', edit_offer_path(offer) if can? :update, offer %>
+              <% unless offer.accepted %>
+                  <%= link_to 'Принять', accept_offer_path(offer), class: "btn btn-success", method: :post if can? :accept, offer %>
+                  <% else %>
+              <%= link_to 'Расторгнуть!', reject_offer_path(offer), class: "btn btn-danger", method: :post if can? :reject, offer %>
+                  <% end %>
             </small>
           </p>
+
         </div>
       </div>
     </div>
