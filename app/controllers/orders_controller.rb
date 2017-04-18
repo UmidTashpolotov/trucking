@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    authorize! :create, @order
+    kill -9
     @order = current_user.orders.create(order_params)
     if @order.save
       redirect_to root_path

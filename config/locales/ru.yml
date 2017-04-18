@@ -9,3 +9,37 @@ ru:
   another_action: "Другое действие"
   something_else: "Еще что-нибудь"
   exit: "Выход"
+
+  activerecord:
+    models:
+      user: Пользователь
+      car: Автомобиль
+      document: Документ
+      offer: Предложение
+      order: Заказ
+    attributes:
+      user:
+        name: Имя
+        surname: Фамилия
+        phone: Телефон
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+      car:
+        about: Описание
+      document:
+        title: Название
+      offer:
+        about: Описание
+      order:
+        about: Описание
+        from_city: Откуда
+        to_city: Куда
+        cargo: Груз
+        price: Стоимость
+        weight: Вес
+        volume: Объем
+        transport: Тип транспорта
+        departure_date: Дата отправки
+        payment_method: Метод оплаты
+        temperature_regime: Температурный режим
+        loading_type: Метод погрузки
