@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417103755) do
+ActiveRecord::Schema.define(version: 20170418095020) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "about"
@@ -42,13 +42,20 @@ ActiveRecord::Schema.define(version: 20170417103755) do
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "about"
-    t.string   "status",     default: "new"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "status",             default: "new"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "from_city"
     t.string   "to_city"
     t.string   "cargo"
     t.string   "price"
+    t.integer  "weight"
+    t.integer  "volume"
+    t.string   "transport"
+    t.date     "departure_date"
+    t.string   "payment_method"
+    t.string   "temperature_regime"
+    t.string   "loading_type"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

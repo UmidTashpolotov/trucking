@@ -9,6 +9,13 @@
           <li>Куда:<%= @order.to_city %></li>
           <li>Что: <%= @order.cargo %></li>
           <li>Цена: <%= @order.price %></li>
+          <li>Вес: <%= @order.weight %></li>
+          <li>Объем: <%= @order.volume %></li>
+          <li>Тип транспорта: <%= @order.transport %></li>
+          <li>Дата отправки: <%= @order.departure_date %></li>
+          <li>Метод оплаты: <%= @order.payment_method %></li>
+          <li>Температурный режим: <%= @order.temperature_regime %></li>
+          <li>Метод погрузки: <%= @order.loading_type %></li>
         </ul>
         <p>Дополнительно: <%= @order.about %></p>
         <%= link_to 'Удалить заказ', order_path(@order), method: 'delete' if can? :destroy, @order %>

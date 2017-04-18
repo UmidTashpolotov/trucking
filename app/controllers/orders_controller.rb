@@ -37,6 +37,9 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:about, :from_city, :to_city, :cargo, :price)
+    params.require(:order).permit(:about, :from_city, :to_city, :cargo, :price,
+                                  :weight, :volume, :transport, :departure_date,
+                                  :payment_method, :temperature_regime,
+                                  :loading_type)
   end
 end
