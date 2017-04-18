@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    kill -9
     @order = current_user.orders.create(order_params)
     if @order.save
       redirect_to root_path
