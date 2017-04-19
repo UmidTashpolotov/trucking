@@ -13,6 +13,14 @@ class Ability
         order.user == user
       end
       can :create, Order
+      can :close, Order do |order|
+        order.user == user
+        order.status == 'open'
+      end
+      can :complete, Order do |order|
+        order.user == user
+        order.status == 'in_progress'
+      end
       can :destroy, Order do |order|
         order.user == user
       end

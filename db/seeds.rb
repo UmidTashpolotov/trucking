@@ -19,7 +19,6 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
 
   order = Order.create!(
   	about: Faker::Lorem.sentence,
-  	status: 'new',
     from_city: Faker::Address.country + '/' + Faker::Address.city,
     to_city: Faker::Address.country + '/' + Faker::Address.city,
     price: prices.sample.to_s + currency.sample,

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'users/show/:id' => 'users#show', as: "users_show"
   devise_for :users
-  resources :orders, only: [:show, :new, :create, :destroy]
+  resources :orders, only: [:show, :new, :create, :destroy] do
+    member do
+      post :close
+      post :complete
+    end
+  end
   resources :offers do
     member do
       post :accept

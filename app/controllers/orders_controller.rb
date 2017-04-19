@@ -33,6 +33,20 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
+  def close
+    authorize! :close, @order
+    @order = Order.find(params[:id])
+    @order.close
+    redirect_to root_path
+  end
+
+  def complete
+    authorize! :complete, @order
+    @order = Order.find(params[:id])
+    @order.complete
+    redirect_to root_path
+  end
+
   private
 
   def order_params

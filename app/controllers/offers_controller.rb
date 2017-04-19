@@ -34,8 +34,7 @@ class OffersController < ApplicationController
     authorize! :accept, @offer
     offer = Offer.find(params[:id])
     offer.accept
-    offer.order.status = "in progress"
-    offer.order.save
+    offer.order.in_progress
     redirect_to :back
   end
 
@@ -43,8 +42,7 @@ class OffersController < ApplicationController
     authorize! :reject, @offer
     offer = Offer.find(params[:id])
     offer.reject
-    offer.order.status = "new"
-    offer.order.save
+    offer.order.open
     redirect_to :back
   end
 
