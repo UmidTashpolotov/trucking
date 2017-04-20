@@ -32,17 +32,21 @@ class OffersController < ApplicationController
 
   def accept
     authorize! :accept, @offer
-    offer = Offer.find(params[:id])
-    offer.accept
-    offer.order.in_progress
+    @offer = Offer.find(params[:id])
+    @order = @offer.order
+    @offer.accept
+    @order.in_progress
+    @order.update(worker: @offer.user)
     redirect_to :back
   end
 
   def reject
     authorize! :reject, @offer
-    offer = Offer.find(params[:id])
-    offer.reject
-    offer.order.open
+    @offer = Offer.find(params[:id])
+    @order = @offer.order
+    @offer.reject
+    @order.open
+    @order.update(worker: nil)
     redirect_to :back
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419114345) do
+ActiveRecord::Schema.define(version: 20170420073056) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "about"
@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20170419114345) do
     t.string   "payment_method"
     t.string   "temperature_regime"
     t.string   "loading_type"
+    t.integer  "worker_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["worker_id"], name: "index_orders_on_worker_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
+  belongs_to :worker, class_name: 'User'
   has_many :offers, dependent: :destroy
 
   def selected_offer

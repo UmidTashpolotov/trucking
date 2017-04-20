@@ -37,14 +37,14 @@ class OrdersController < ApplicationController
     authorize! :close, @order
     @order = Order.find(params[:id])
     @order.close
-    redirect_to root_path
+    redirect_to order_path(@order)
   end
 
   def complete
     authorize! :complete, @order
     @order = Order.find(params[:id])
     @order.complete
-    redirect_to root_path
+    redirect_to order_path(@order)
   end
 
   private

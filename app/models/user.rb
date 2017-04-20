@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :documents
   has_many :offers
   has_many :orders
+  has_many :worked_orders, foreign_key: "worker_id", class_name: "Order"
 
   def admin?
     self.role == 'admin'

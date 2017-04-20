@@ -29,11 +29,16 @@ class Ability
       can :create, Offer
       can :update, Offer do |offer|
         offer.user == user
+        offer.order.status == 'open'
       end
       can :destroy, Offer do |offer|
         offer.user == user
+        offer.order.status == 'open'
       end
-
+      can :complete, Order do |order|
+        order.worker == user
+        order.status == 'in_progress'
+      end
     else
       can :read, Order
     end
