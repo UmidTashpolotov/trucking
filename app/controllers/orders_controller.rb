@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
     authorize! :read, @order
     @offer = Offer.new
+    @comment = Comment.new
   end
 
   def new

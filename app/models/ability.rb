@@ -14,30 +14,31 @@ class Ability
       end
       can :create, Order
       can :close, Order do |order|
-        order.user == user
-        order.status == 'open'
+        order.user == user and order.status == 'open'
       end
       can :complete, Order do |order|
-        order.user == user
-        order.status == 'in_progress'
+        order.user == user and order.status == 'in_progress'
       end
       can :destroy, Order do |order|
         order.user == user
+      end
+      can :comment, Order do |order|
+        order.user == user and order.status == 'completed' and !order.has_comment_from(user)
       end
     elsif user.worker?
       can :read, Order
       can :create, Offer
       can :update, Offer do |offer|
-        offer.user == user
-        offer.order.status == 'open'
+        offer.user == user and offer.order.status == 'open'
       end
       can :destroy, Offer do |offer|
-        offer.user == user
-        offer.order.status == 'open'
+        offer.user == user and offer.order.status == 'open'
       end
       can :complete, Order do |order|
-        order.worker == user
-        order.status == 'in_progress'
+        order.worker == user and order.status == 'in_progress'
+      end
+      can :comment, Order do |order|
+        order.worker == user and order.status == 'completed' and !order.has_comment_from(user)
       end
     else
       can :read, Order

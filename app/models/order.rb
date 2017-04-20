@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :worker, class_name: 'User'
   has_many :offers, dependent: :destroy
+  has_many :comments
 
   def selected_offer
     self.offers.where(accepted: true)
@@ -27,4 +28,7 @@ class Order < ApplicationRecord
     save
   end
 
+  def has_comment_from(user)
+    comments.exists?(from_user: user)
+  end
 end

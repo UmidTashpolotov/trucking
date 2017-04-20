@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post :reject
     end
   end
+  resources :comments
 
   root 'orders#index'
   namespace :admin do

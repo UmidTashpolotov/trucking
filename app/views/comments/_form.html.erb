@@ -1,0 +1,8 @@
+<%= simple_form_for @comment do |f| %>
+  <%= f.input :body %>
+  <%= f.input :rating %>
+  <%= f.hidden_field :order_id, value: @order.id %>
+  <%= f.hidden_field :from_user_id, value: current_user.id %>
+  <%= f.hidden_field :to_user_id, value: (current_user.worker? ? @order.user.id : @order.worker.id) %>
+  <%= f.submit %>
+<% end %>

@@ -21,6 +21,9 @@
         <%= link_to 'Удалить заказ', close_order_path(@order), method: :post if can? :close, @order %>
         <%= link_to 'Завершить заказ', complete_order_path(@order), method: :post if can? :complete, @order %>
         <hr>
+        <%= render 'comments/form' if can? :comment, @order %>
+        <%= render @order.comments %>
+        <hr>
         <% if can? :create, @offer and @order.offers.where(user: current_user).empty? %>
             <%= render 'offers/form', order: @order %>
         <% end %>

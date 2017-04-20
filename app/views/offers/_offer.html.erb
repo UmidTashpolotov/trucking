@@ -14,7 +14,6 @@
 
           <h4 class="media-heading user_name"><%= offer.user.name %></h4>
           <%= offer.about %>
-          <%= offer.accepted %>
           <p>
             <small>
               <%= link_to 'Удалить', offer_path(offer), method: 'delete' if can? :destroy, offer %>
