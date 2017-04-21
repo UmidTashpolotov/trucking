@@ -3,7 +3,11 @@ class OffersController < ApplicationController
   load_and_authorize_resource
   def create
     authorize! :create, @offer
+    @order = Order.find(params[:order_id])
   	@offer = Offer.new(offer_params)
+    @offer.user = current_user
+    @offer.order = @order
+    @offer.status = 'new'
   	if @offer.save
   		redirect_to :back
   	else

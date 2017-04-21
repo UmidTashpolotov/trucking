@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :orders, only: [:show, :new, :create, :destroy] do
     resources :comments
+    resources :offers, only: :create
     member do
       post :close
       post :complete
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
       post :reject
     end
   end
-
   root 'orders#index'
   namespace :admin do
     root 'users#index'
