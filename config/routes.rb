@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/show/:id' => 'users#show', as: "users_show"
   devise_for :users
   resources :orders, only: [:show, :new, :create, :destroy] do
+    resources :comments
     member do
       post :close
       post :complete
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
       post :reject
     end
   end
-  resources :comments
 
   root 'orders#index'
   namespace :admin do
