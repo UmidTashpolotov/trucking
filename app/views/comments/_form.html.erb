@@ -1,5 +1,5 @@
 <%= simple_form_for [@order, @comment] do |f| %>
   <%= f.input :body %>
-  <%= f.input :rating %>
+  <%= f.input :rating, collection: 1..5, default: 1 %>
   <%= f.submit %>
 <% end %>

@@ -10,9 +10,6 @@
 
   <body>
     <%= render 'layouts/application/navbar' %>
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: "alert alert-#{type}" %>
-    <% end %>
     
     <% if user_signed_in? %>
       <% if current_user.role == 'customer' %>
@@ -20,8 +17,10 @@
       <% elsif current_user.role == 'worker' %>
         <%= render 'users/worker' %>
       <% end %>
-    <% else %>
-      <h1>У НАС ВСЕ ОК</h1>
+    <% end %>
+
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: "alert alert-#{type}" %>
     <% end %>
 
 
