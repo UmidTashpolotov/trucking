@@ -7,8 +7,12 @@ class Ability
       can :manage, :all
     elsif user.customer?
       can :read, Offer
-      can :accept, Offer
-      can :reject, Offer
+      can :accept, Offer do |offer|
+        offer.order.status == 'open'
+      end
+      can :reject, Offer do |offer|
+        offer.order.status == 'in_progress'
+      end
       can :read, Order do |order|
         order.user == user
       end

@@ -1,20 +1,56 @@
-<h1>Мой профиль</h1>
-
-Имя: <b><%= @user.name %></b>
-<p>
-  Фамилия: <b><%= @user.surname %></b>
-</p>
-<p>
-  Телефон: <b><%= @user.phone %></b>
-</p>
-<p>
-  Рейтинг: <b>*******</b>
-</p>
-<p>
-  Количество сделок: <b>#</b>
-</p>
-<hr>
-<h3>Отзывы</h3>
-<div class="col-md-6">
-<%= render @user.comments %>
-</div>
+ <div class="row">
+    <div class="col-md-10 toppad">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %> <%= @user.surname %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center">
+              <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+            </div>
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                <tr>
+                  <td>Роль</td>
+                  <td><%= @user.role %></td>
+                </tr>
+                <tr>
+                  <td><b>Рейтинг</b></td>
+                  <td><b>4.5</b></td>
+                </tr>
+                <tr>
+                  <td><b>Кол-во заказов</b></td>
+                  <td><b><%= @user.orders.count %></b></td>
+                </tr>
+                <tr>
+                  <td>Дата регистрации:</td>
+                  <td>06/23/2013</td>
+                </tr>
+                <tr>
+                <tr>
+                  <td>Email</td>
+                  <td><%= @user.email %></td>
+                </tr>
+                <td>Телефон</td>
+                <td><%= @user.phone %>
+                </td>
+                </tr>
+                </tbody>
+              </table>
+              <a href="#" class="btn btn-primary">My Sales Performance</a>
+              <a href="#" class="btn btn-primary">Team Sales Performance</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
+            <i class="glyphicon glyphicon-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <h3>Отзывы:</h3>
+      <%= render @user.comments %>
+    </div>
+  </div>
