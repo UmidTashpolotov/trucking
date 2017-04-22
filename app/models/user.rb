@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'to_user_id'
   has_many :commented_on, foreign_key: 'from_user_id', class_name: 'Comment'
 
+  ROLES = %w[ customer worker ]
+
   def admin?
     self.role == 'admin'
   end
