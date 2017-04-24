@@ -9,6 +9,14 @@ ru:
   another_action: "Другое действие"
   something_else: "Еще что-нибудь"
   exit: "Выход"
+  update_profile: "Обновление данных профиля:"
+  profile: "Профиль"
+  name: имя
+  surname: фамилия
+  phone: телефон
+  fill_in: Заполнить
+  fill_it: "Заполните следующие поля:"
+  profile_complete_status: "Профиль заполнен на"
 
   activerecord:
     models:

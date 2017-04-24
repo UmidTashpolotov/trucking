@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'orders#index'
-  get 'users/show/:id' => 'users#show', as: "users_show"
   devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :users, only: [:show, :edit, :update]
   resources :orders, only: [:show, :new, :create, :destroy] do
     resources :comments
     resources :offers, only: :create

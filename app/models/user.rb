@@ -33,4 +33,17 @@ class User < ApplicationRecord
   def deactivate
     update_attribute :active, false
   end
+
+  def profile_uncomplete?
+    name.blank? || surname.blank? || phone.blank?
+  end
+
+  def blank_fields
+    blank_fields = []
+    blank_fields << 'name' if name.blank?
+    blank_fields << 'surname' if surname.blank?
+    blank_fields << 'phone' if phone.blank?
+
+    return blank_fields
+  end
 end
