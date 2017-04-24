@@ -7,7 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password , :role)
+    params.require(:user).permit(:email, :password, :password_confirmation,
+                                 :current_password, :role, :name, :surname, :phone)
   end
 
   def check_role

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'orders#index'
   get 'users/show/:id' => 'users#show', as: "users_show"
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :orders, only: [:show, :new, :create, :destroy] do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
       post :reject
     end
   end
-  root 'orders#index'
+  resources :documents
   namespace :admin do
     root 'users#index'
     resources :users

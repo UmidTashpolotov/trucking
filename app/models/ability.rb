@@ -32,6 +32,13 @@ class Ability
     elsif user.worker?
       can :read, Order
       can :create, Offer
+      can :read, Document do |doc|
+        doc.user == user
+      end
+      can :create, Document
+      can :update, Document do |doc|
+        doc.user == user
+      end
       can :update, Offer do |offer|
         offer.user == user and offer.order.status == 'open'
       end

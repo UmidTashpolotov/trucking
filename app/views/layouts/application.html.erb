@@ -23,7 +23,8 @@
       <%= content_tag :div, message, class: "alert alert-#{type}" %>
     <% end %>
 
-
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
