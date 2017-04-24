@@ -11,6 +11,23 @@ class Admin::UsersController < AdminController
     @user = User.new
   end
 
+  def activate
+    @user = User.find(params[:id])
+    @user.activate
+    redirect_to admin_users_path
+  end
+
+  def deactivate
+    @user = User.find(params[:id])
+    @user.deactivate
+    redirect_to admin_users_path
+  end
+
+  def show_docs
+    @user = User.find(params[:id])
+    @documents = @user.documents
+  end
+
   def create
     @user = User.new(user_params)
 

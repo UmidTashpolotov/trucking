@@ -23,6 +23,11 @@ Rails.application.routes.draw do
       collection do
         get :inactive
       end
+      member do
+        post :activate
+        post :deactivate
+        get :show_docs
+      end
     end
   end
 end

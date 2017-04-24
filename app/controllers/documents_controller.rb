@@ -26,6 +26,10 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
+  def show
+    @document = Document.find(params[:id])
+  end
+
   def index
     @documents = current_user.documents
   end

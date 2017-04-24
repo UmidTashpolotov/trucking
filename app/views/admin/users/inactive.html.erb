@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Users <%= link_to 'Add users', new_admin_user_path, class: 'btn btn-success' %></h1>
+  </div>
+</div>
+
+<hr />
+
+<table class="table table-striped">
+  <tr>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Телефон</th>
+    <th>Документы</th>
+    <th style="width: 100px;">Actions</th>
+  </tr>
+
+  <% @users.each do |user| %>
+      <tr id="user<%= "#{user.id}"%>">
+        <td><%= user.name %></td>
+        <td><%= user.surname %></td>
+        <td><%= user.phone %></td>
+        <td><%= link_to 'Посмотреть', show_docs_admin_user_path(user) %></td>
+        <td>
+          <%= link_to 'Activate', activate_admin_user_path(user), method: :post %>
+        </td>
+      </tr>
+  <% end %>
+</table>
