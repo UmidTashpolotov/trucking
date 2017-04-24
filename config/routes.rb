@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :documents
   namespace :admin do
     root 'users#index'
-    resources :users
+    resources :users do
+      collection do
+        get :inactive
+      end
+    end
   end
 end

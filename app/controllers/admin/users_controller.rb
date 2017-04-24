@@ -3,6 +3,10 @@ class Admin::UsersController < AdminController
     @users = User.all
   end
 
+  def inactive
+    @users = User.where(active: false)
+  end
+
   def new
     @user = User.new
   end
