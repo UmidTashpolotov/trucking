@@ -24,7 +24,7 @@
         <%= render 'comments/form' if can? :comment, @order %>
         <%= render @order.comments %>
         <hr>
-        <% if can? :create, @offer and @order.offers.where(user: current_user).empty? %>
+        <% if can? :offer, @order and @order.offers.where(user: current_user).empty? %>
             <%= render 'offers/form', order: @order %>
         <% end %>
         <hr>

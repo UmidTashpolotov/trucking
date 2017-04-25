@@ -2,8 +2,8 @@ class OffersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
   def create
-    authorize! :create, @offer
     @order = Order.find(params[:order_id])
+    authorize! :offer, @order
   	@offer = Offer.new(offer_params)
     @offer.user = current_user
     @offer.order = @order

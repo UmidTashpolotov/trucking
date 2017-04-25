@@ -31,6 +31,9 @@ class Ability
       end
     elsif user.worker?
       can :read, Order
+      can :offer, Order do |order|
+        order.status == 'open' and user.active?
+      end
       can :create, Offer
       can :read, Document do |doc|
         doc.user == user
