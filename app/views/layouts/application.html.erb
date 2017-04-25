@@ -13,9 +13,9 @@
     
     <% if user_signed_in? %>
       <% if current_user.role == 'customer' %>
-        <%= render 'users/customer' %>
+        <%= render 'layouts/customer_menu' %>
       <% elsif current_user.role == 'worker' %>
-        <%= render 'users/worker' %>
+        <%= render 'layouts/worker_menu' %>
       <% end %>
       <%= render 'layouts/application/complete_your_profile' if current_user.profile_uncomplete? %>
     <% end %>

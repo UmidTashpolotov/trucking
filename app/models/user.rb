@@ -35,14 +35,21 @@ class User < ApplicationRecord
   end
 
   def profile_uncomplete?
-    name.blank? || surname.blank? || phone.blank?
+    if role == 'customer'
+      name.blank? || surname.blank? || phone.blank?
+    elsif role == 'worker'
+      name.blank? || surname.blank? || phone.blank? || cars.blank? || documents.blank?
+    end
   end
 
   def blank_fields
     blank_fields = []
+
     blank_fields << 'name' if name.blank?
     blank_fields << 'surname' if surname.blank?
     blank_fields << 'phone' if phone.blank?
+    blank_fields << 'car' if cars.blank? && role == 'worker'
+    blank_fields << 'document' if documents.blank? && role == 'worker'
 
     return blank_fields
   end

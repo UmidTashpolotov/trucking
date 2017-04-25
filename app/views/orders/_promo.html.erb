@@ -1,0 +1,24 @@
+<article>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <figure>
+        <img src="http://usbcode.ir/wp-content/uploads/2017/03/bootstrap.jpg">
+      </figure>
+    </div>
+    <div class="col-sm-6 col-md-8">
+      <span class="alert pull-right">
+        Готов заплатить <%= order.price %>
+      </span>
+      <h4>Из: <%= order.from_city%></h4>
+      <h4>В: <%= order.to_city%></h4>
+      <p>Что: <%= order.cargo %></p>
+      <p>Вес: <%= order.weight %></p>
+      <section>
+        <i class="glyphicon glyphicon-user"></i><%= "#{order.user.name} #{order.user.surname}" %>
+        <i class="glyphicon glyphicon-calendar"></i><%= order.created_at.strftime("%Y-%m-%d") %>
+        <i class="glyphicon glyphicon-eye-open"></i><%= rand(0..100) %>
+        <%= link_to 'Информация', new_user_session_path, class: 'btn btn-success btn-sm pull-right' %>
+      </section>
+    </div>
+  </div>
+</article>

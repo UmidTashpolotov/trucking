@@ -15,15 +15,21 @@
 		<div class="container">
 		  <div class="row">
 		    <div class="col-md-8 col-md-offset-2">
-		        <% if Order.all.empty? %>
+		        <% if @orders.empty? %>
 		           <h1> ПОКА НЕТ ЗАКАЗОВ  </h1>
 		        <% else %>
-		          <%= render Order.all.reverse %>
+		          <%= render @orders.reverse %>
 		        <% end %>
 		    </div>
 		  </div>
 		</div>
 	<% end %>
 <% else %>
-	<h1>НУЖНА РЕГИСТРАЦИЯ ДЛЯ ПРОСМОТРА</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= render partial: 'promo', collection: @orders.reverse, as: :order %>
+        </div>
+      </div>
+    </div>
 <% end %>
