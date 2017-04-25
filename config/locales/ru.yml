@@ -16,7 +16,7 @@ ru:
   phone: телефон
   fill_in: Заполнить
   fill_it: "Заполните следующие поля:"
-  profile_complete_status: "Профиль заполнен на"
+  profile_complete_status: "Ваш профиль заполнен на"
 
   activerecord:
     models:
