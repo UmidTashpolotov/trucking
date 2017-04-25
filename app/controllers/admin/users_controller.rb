@@ -1,6 +1,21 @@
 class Admin::UsersController < AdminController
   def index
-    @users = User.all
+    @users =  case params[:sort]
+              when 'all'
+                User.all
+              when 'admins'
+                User.where(role: 'admin')
+              when 'workers'
+                User.where(role: 'worker')
+              when 'customers'
+                User.where(role: 'customer')
+              when 'inactive_workers'
+                User.where(role: 'worker', active: false)
+              when 'inactive_customers'
+                User.where(role: 'customer', active: false)
+              else
+                User.all
+              end
   end
 
   def inactive
@@ -44,8 +59,7 @@ class Admin::UsersController < AdminController
 
   def update
     @user = User.find(params[:id])
-    
-    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?    
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)    
       params[:user].delete(:password_confirmation)
     end
@@ -64,6 +78,7 @@ class Admin::UsersController < AdminController
   end
 
   def user_params
-    params.require(:user).permit(:name, :surname, :phone, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :surname, :phone, :email, :password,
+                                 :password_confirmation)
   end
 end
