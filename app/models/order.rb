@@ -4,6 +4,12 @@ class Order < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_many :comments
 
+  validates :about, presence: true
+  validates :from_city, presence: true
+  validates :to_city, presence: true
+  validates :cargo, presence: true
+  validates :price, presence: true
+
   def selected_offer
     self.offers.where(accepted: true)
   end

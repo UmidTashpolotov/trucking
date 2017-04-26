@@ -8,14 +8,14 @@
 <%= simple_form_for @order do |f| %>
     <div class="col-md-6">
       <%= f.input :from_city %>
-      <%= f.input :to_city %>
       <%= f.input :cargo %>
       <%= f.input :price %>
       <%= f.input :about %>
+      <%= f.input :volume %>
       <%= f.input :weight %>
     </div>
     <div class="col-md-6">
-      <%= f.input :volume %>
+      <%= f.input :to_city %>
       <%= f.input :transport %>
       <%= f.input :departure_date, as: :date, start_year: Date.today.year,
                   end_year: Date.today.year + 1, start_day: Date.today.day,

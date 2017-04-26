@@ -5,6 +5,8 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
+
+
     elsif user.customer?
       can :read, Offer
       can :accept, Offer do |offer|
@@ -29,6 +31,8 @@ class Ability
       can :comment, Order do |order|
         order.user == user and order.status == 'completed' and !order.has_comment_from(user)
       end
+
+
     elsif user.worker?
       can :read, Order
       can :offer, Order do |order|
