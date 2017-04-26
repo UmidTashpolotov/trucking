@@ -29,6 +29,7 @@ ru:
       order: Заказ
     attributes:
       user:
+        role: Роль
         name: Имя
         surname: Фамилия
         phone: Телефон

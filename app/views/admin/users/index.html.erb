@@ -28,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @users.each do |user| %>
+        <% @users.reverse.each do |user| %>
             <tr>
               <td><%= link_to user.email, user_path(user) %></td>
               <td><%= user.surname %></td>
