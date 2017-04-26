@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'orders#index'
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :update]
+  get :my_profile, to: 'users#show'
+  scope 'my_profile' do
+    get :edit, to: 'users#edit'
+  end
+
   resources :orders, only: [:show, :new, :create, :destroy] do
     resources :comments
     resources :offers, only: :create

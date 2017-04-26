@@ -2,19 +2,19 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])
+    @user = !params[:id].nil? ? User.find(params[:id]) : current_user
   end
 
   def edit
-    @user = User.find(current_user)
+    @user = current_user
   end
 
   def update
-    @user = User.find(current_user)
+    @user = current_user
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to my_profile_path, notice: 'Your profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
