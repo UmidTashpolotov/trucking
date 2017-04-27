@@ -1,25 +1,26 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, except: [:index]
+  load_and_authorize_resource
 
+	def index
+		@orders = Order.all
+	end
 
-  def index
-    @orders = Order.all
-  end
-
-  def show
+	def show
+		@order = Order.find(params[:id])
     authorize! :read, @order
-    @order = Order.find(params[:id])
     @offer = Offer.new
     @comment = Comment.new
   end
 
   def new
-    authorize! :create, @order
     @order = Order.new
+    authorize! :create, @order
   end
 
   def create
-    authorize! :create, @order
     @order = current_user.orders.create(order_params)
+    authorize! :create, @order
     if @order.save
       redirect_to root_path
     else
