@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
-  create_table "orders.rb.feature", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "about"
     t.string   "status",             default: "open"

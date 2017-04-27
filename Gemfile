@@ -40,6 +40,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'launchy'
+  # gem 'rspec'
   gem "chromedriver-helper"
 end
 
