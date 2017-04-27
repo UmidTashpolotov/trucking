@@ -1,35 +1,21 @@
-<% if user_signed_in? %>
-	<% if current_user.role == 'customer'%>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-		        <% if current_user.orders.empty?%>
-		  			   <h1>У ВАС ПОКА НЕТ ЗАКАЗОВ  </h1>
-		        <% else %>
-		          <%= render current_user.orders.reverse %>
-		        <% end %>
-		  	</div>
-		  </div>
-		</div>
-	<% elsif current_user.role == 'worker'%>
-		<div class="container">
-		  <div class="row">
-		    <div class="col-md-8 col-md-offset-2">
-		        <% if @orders.empty? %>
-		           <h1> ПОКА НЕТ ЗАКАЗОВ  </h1>
-		        <% else %>
-		          <%= render @orders.reverse %>
-		        <% end %>
-		    </div>
-		  </div>
-		</div>
-	<% end %>
-<% else %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <%= render partial: 'promo', collection: @orders.reverse, as: :order %>
-        </div>
-      </div>
-    </div>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? %>
+        <% if current_user.role == 'customer' %>
+            <% if current_user.orders.empty? %>
+                <h1>У ВАС ПОКА НЕТ ЗАКАЗОВ</h1>
+            <% else %>
+                <%= render current_user.orders.reverse %>
+            <% end %>
+        <% elsif current_user.role == 'worker' %>
+            <% if @orders.empty? %>
+                <h1>ПОКА НЕТ ЗАКАЗОВ</h1>
+            <% else %>
+                <%= render @orders.reverse %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <%= render partial: 'promo', collection: @orders.reverse, as: :order %>
+    <% end %>
+  </div>
+</div>

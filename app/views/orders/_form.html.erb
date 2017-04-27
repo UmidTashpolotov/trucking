@@ -1,31 +1,25 @@
-<% if @order.errors.any? %>
-    <%= pluralize(@order.errors.count, "error") %> prohibited this article from being saved:
-    <% @order.errors.full_messages.each do |msg| %>
-        <%= msg %>
-    <% end %>
-<% end %>
 <div class="row">
-<%= simple_form_for @order do |f| %>
-    <div class="col-md-6">
-      <%= f.input :from_city %>
-      <%= f.input :cargo %>
-      <%= f.input :price %>
-      <%= f.input :about %>
-      <%= f.input :volume %>
-      <%= f.input :weight %>
-    </div>
-    <div class="col-md-6">
-      <%= f.input :to_city %>
-      <%= f.input :transport %>
-      <%= f.input :departure_date, as: :date, start_year: Date.today.year,
-                  end_year: Date.today.year + 1, start_day: Date.today.day,
-                  order: [:day, :month, :year] %>
-      <%= f.input :payment_method %>
-      <%= f.input :temperature_regime %>
-      <%= f.input :loading_type %>
-    <div class="form-actions">
-      <%= f.submit 'Создать заказ', class: "btn btn-default" %>
-    </div>
-    </div>
-<% end %>
+  <%= simple_form_for @order do |f| %>
+      <div class="col-md-6">
+        <%= f.input :from_city %>
+        <%= f.input :cargo %>
+        <%= f.input :price %>
+        <%= f.input :about %>
+        <%= f.input :volume %>
+        <%= f.input :weight %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :to_city %>
+        <%= f.input :transport %>
+        <%= f.input :departure_date, as: :date, start_year: Date.today.year,
+                    end_year: Date.today.year + 1, start_day: Date.today.day,
+                    order: [:day, :month, :year] %>
+        <%= f.input :payment_method %>
+        <%= f.input :temperature_regime %>
+        <%= f.input :loading_type %>
+      </div>
+      <div class="col-md-12">
+        <%= f.submit 'Создать заказ', class: "btn btn-primary" %>
+      </div>
+  <% end %>
 </div>

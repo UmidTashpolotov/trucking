@@ -1,22 +1,24 @@
-<article>
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <figure>
-        <img src="http://usbcode.ir/wp-content/uploads/2017/03/bootstrap.jpg">
-      </figure>
+<div class="col-md-8 col-md-offset-2">
+  <article>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <figure>
+          <img src="http://usbcode.ir/wp-content/uploads/2017/03/bootstrap.jpg">
+        </figure>
+      </div>
+      <div class="col-sm-6 col-md-8">
+            <span class="label label-default pull-right"><i class="glyphicon glyphicon-comment"></i>
+              <%= order.offers.count %>
+            </span>
+        <h4><%= order.user.name %></h4>
+        <p><%= order.about %></p>
+        <section>
+          <i class="glyphicon glyphicon-user"></i><%= "#{order.user.name} #{order.user.surname}" %>
+          <i class="glyphicon glyphicon-calendar"></i><%= order.created_at.strftime("%Y-%m-%d") %>
+          <i class="glyphicon glyphicon-eye-open"></i><%= rand(0..100) %>
+          <%= link_to 'Информация', order_path(order), class: 'btn btn-success btn-sm pull-right' %>
+        </section>
+      </div>
     </div>
-    <div class="col-sm-6 col-md-8">
-		                <span class="label label-default pull-right"><i class="glyphicon glyphicon-comment"></i>
-                      <%= order.offers.count %>
-                    </span>
-      <h4><%= order.user.name %></h4>
-      <p><%= order.about %></p>
-      <section>
-        <i class="glyphicon glyphicon-user"></i><%= "#{order.user.name} #{order.user.surname}" %>
-        <i class="glyphicon glyphicon-calendar"></i><%= order.created_at.strftime("%Y-%m-%d") %>
-        <i class="glyphicon glyphicon-eye-open"></i><%= rand(0..100) %>
-        <%= link_to 'Информация', order_path(order), class: 'btn btn-success btn-sm pull-right' %>
-      </section>
-    </div>
-  </div>
-</article>
+  </article>
+</div>

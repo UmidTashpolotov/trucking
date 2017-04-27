@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get :edit, to: 'users#edit'
   end
 
-  resources :orders, only: [:show, :new, :create, :destroy] do
+  resources :orders, except: [:edit, :update] do
     resources :comments
     resources :offers, only: :create
     member do

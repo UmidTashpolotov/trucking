@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create]
-  load_and_authorize_resource
 
-	def index
-		@orders = Order.all
-	end
 
-	def show
-		@order = Order.find(params[:id])
+  def index
+    @orders = Order.all
+  end
+
+  def show
     authorize! :read, @order
+    @order = Order.find(params[:id])
     @offer = Offer.new
     @comment = Comment.new
   end
@@ -19,6 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    authorize! :create, @order
     @order = current_user.orders.create(order_params)
     if @order.save
       redirect_to root_path
