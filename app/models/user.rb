@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 	validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
 
-  has_many :cars
-  has_many :documents
-  has_many :offers
-  has_many :orders
+  has_many :cars, dependent: :destroy
+  has_many :documents, dependent: :destroy
+  has_many :offers, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :worked_orders, foreign_key: 'worker_id', class_name: 'Order'
   has_many :comments, foreign_key: 'to_user_id'
   has_many :commented_on, foreign_key: 'from_user_id', class_name: 'Comment'
