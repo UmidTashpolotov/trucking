@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Trucking</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Trucking</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= render 'layouts/application/navbar' %>
-    
-    <% if user_signed_in? %>
-      <% if current_user.role == 'customer' %>
+<body>
+<%= render 'layouts/application/navbar' %>
+
+<% if user_signed_in? %>
+    <% if current_user.customer? %>
         <%= render 'layouts/customer_menu' %>
-      <% elsif current_user.role == 'worker' %>
+    <% elsif current_user.worker? %>
         <%= render 'layouts/worker_menu' %>
-      <% end %>
-      <%= render 'layouts/application/complete_your_profile' if current_user.profile_uncomplete? %>
     <% end %>
+    <%= render 'layouts/application/complete_your_profile' if current_user.profile_uncomplete? %>
+<% end %>
 
-    <% flash.each do |type, message| %>
+<div class="container">
+  <% flash.each do |type, message| %>
       <%= content_tag :div, message, class: "alert alert-#{type}" %>
-    <% end %>
+  <% end %>
 
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+  <%= yield %>
+</div>
+</body>
 </html>

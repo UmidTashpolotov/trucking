@@ -15,12 +15,9 @@
       </tr>
       </thead>
       <tbody>
-      <% if current_user.cars.blank? %>
-          <h3>Вы не добавили ни одну машину</h3>
-      <% else %>
-          <%= render current_user.cars %>
-      <% end %>
+        <%= render current_user.cars unless current_user.cars.blank? %>
       </tbody>
     </table>
+    <%= content_tag(:h3, 'Вы не добавили ни одну машину', class: 'text-center') if current_user.cars.blank? %>
   </div>
 </div>
