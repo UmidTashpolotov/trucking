@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20170424070536) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cars", force: :cascade do |t|
     t.string   "about"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cars_on_user_id"
+    t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -28,9 +31,9 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.integer  "rating"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["from_user_id"], name: "index_comments_on_from_user_id"
-    t.index ["order_id"], name: "index_comments_on_order_id"
-    t.index ["to_user_id"], name: "index_comments_on_to_user_id"
+    t.index ["from_user_id"], name: "index_comments_on_from_user_id", using: :btree
+    t.index ["order_id"], name: "index_comments_on_order_id", using: :btree
+    t.index ["to_user_id"], name: "index_comments_on_to_user_id", using: :btree
   end
 
   create_table "documents", force: :cascade do |t|
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "image"
-    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
   create_table "offers", force: :cascade do |t|
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "accepted",   default: false
-    t.index ["order_id"], name: "index_offers_on_order_id"
-    t.index ["user_id"], name: "index_offers_on_user_id"
+    t.index ["order_id"], name: "index_offers_on_order_id", using: :btree
+    t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -72,8 +75,8 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.string   "temperature_regime"
     t.string   "loading_type"
     t.integer  "worker_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-    t.index ["worker_id"], name: "index_orders_on_worker_id"
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+    t.index ["worker_id"], name: "index_orders_on_worker_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,8 +97,17 @@ ActiveRecord::Schema.define(version: 20170424070536) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "active",                 default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "cars", "users"
+  add_foreign_key "comments", "orders"
+  add_foreign_key "comments", "users", column: "from_user_id"
+  add_foreign_key "comments", "users", column: "to_user_id"
+  add_foreign_key "documents", "users"
+  add_foreign_key "offers", "orders"
+  add_foreign_key "offers", "users"
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", column: "worker_id"
 end
