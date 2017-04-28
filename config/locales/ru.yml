@@ -17,7 +17,7 @@ ru:
   car: машина
   document: документы
   fill_in: Заполнить
-  fill_it: "Заполните следующие поля:"
+  fill_it: "Добавьте о себе следующую информацию:"
   profile_complete_status: "Ваш профиль заполнен на"
 
   activerecord:

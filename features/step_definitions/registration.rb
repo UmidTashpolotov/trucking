@@ -20,7 +20,6 @@ When(/^я увижу "([^"]*)"$/) do |hello_message|
 end
 
 When(/^я перейду на страницу моего профиля$/) do
-  #click_link('my_profile')
   visit('/my_profile')
 end
 

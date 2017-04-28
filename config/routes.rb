@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   root 'orders#index'
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:show, :update]
+  resources :cars, only: [:create, :edit, :update, :destroy]
+
   get :my_profile, to: 'users#show'
   scope 'my_profile' do
     get :edit, to: 'users#edit'
+    get :add_car, to: 'cars#new'
   end
 
   resources :orders, except: [:edit, :update] do

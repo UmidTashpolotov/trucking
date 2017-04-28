@@ -1,0 +1,11 @@
+<tr>
+  <td><%= car.about %></td>
+  <td><%= car.weight %></td>
+  <td><%= car.volume %></td>
+  <td><%= car.load_type %></td>
+  <td><%= car.car_type %></td>
+  <td>
+    <%= link_to 'Изменить', edit_car_path(car), id: 'edit_car' %>
+    <%= link_to 'Удалить', car_path(car), method: :delete, id: 'delete_car' %>
+  </td>
+</tr>

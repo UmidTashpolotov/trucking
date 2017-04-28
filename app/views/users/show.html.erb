@@ -42,11 +42,13 @@
       </div>
     </div>
     <div class="panel-footer">
-      <%= link_to  'Редактировать имя или телефон', edit_path, class: 'btn btn-success' %>
-      <%= link_to  'Изменить пароль', edit_user_registration_path(current_user), class: 'btn btn-success' %>
-      <%= link_to  'Добавить документы', documents_path, class: 'btn btn-info' if can? :read, Document %>
+      <%= link_to 'Редактировать имя или телефон', edit_path, class: 'btn btn-success' %>
+      <%= link_to 'Изменить пароль', edit_user_registration_path(current_user), class: 'btn btn-success' %>
+      <%= link_to 'Добавить документы', documents_path, class: 'btn btn-info' if can? :read, Document %>
+      <%= link_to 'Добавить машину', add_car_path, class: 'btn btn-info', id: 'add_car' if can? :create, Car %>
     </div>
   </div>
+  <%= render 'cars/panel' if current_user.worker? %>
   <h3>Отзывы:</h3>
   <%= render @user.comments %>
 </div>

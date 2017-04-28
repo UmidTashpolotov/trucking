@@ -1,0 +1,8 @@
+<%= simple_form_for @car do |f| %>
+    <%= f.input :about %>
+    <%= f.input :weight, collection: Car::WEIGHT_SAMPLE %>
+    <%= f.input :volume, collection: Car::VOLUME_SAMPLE %>
+    <%= f.input :load_type, collection: Car::LOAD_TYPE_SAMPLE %>
+    <%= f.input :car_type, collection: Car::CAR_TYPE_SAMPLE %>
+    <%= f.submit class: 'btn btn-primary', id: 'create_car' %>
+<% end %>

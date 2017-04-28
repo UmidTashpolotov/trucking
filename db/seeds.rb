@@ -47,9 +47,9 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   	title: 'pasport' + "#{i}",
   	user: worker)
 
-  Car.create!(
-  	about: 'marka' + "#{i}",
-  	user: worker)
+  # Car.create!(
+  # 	about: 'marka' + "#{i}",
+  # 	user: worker)
 
   Offer.create!(
   	status: 'new',
