@@ -1,24 +1,46 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Версия ruby: 2.3.4
 
-Things you may want to cover:
+* Приложение использует PostgreSQL необходимо установить его перед использованием:
+```
+#!bash
 
-* Ruby version
+apt-get update
+apt-get install postgresql postgresql-contrib libpq-dev
+gem install pg
 
-* System dependencies
+```
+* Ставим гемы
+```
+#!bash
 
-* Configuration
+bundle
+```
 
-* Database creation
+* Обновляем конфигурацию БД
 
-* Database initialization
+```
+#!bash
 
-* How to run the test suite
+cp config/database.yml.sample config/database.yml && nano config/database.yml
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Создаем базы для разработки и тестирования
+```
+#!bash
 
-* Deployment instructions
+rake db:create && rake db:test:prepare
+```
+* Запускаем тесты
+```
+#!bash
 
-* ...
+cucumber
+```
+* Запускаемся
+```
+#!bash
+
+rails s
+```
