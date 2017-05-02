@@ -24,3 +24,7 @@ end
 When(/^переходит на страницу своего профиля$/) do
   visit('/my_profile')
 end
+
+When(/^увидит надпись "([^"]*)"$/) do |message|
+  page.has_content?(message)
+end

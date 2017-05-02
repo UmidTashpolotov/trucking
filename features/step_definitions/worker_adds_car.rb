@@ -35,10 +35,32 @@ When(/^решу изменить данные$/) do |table|
   click_on('create_car')
 end
 
-When(/^удалю автомобиль$/) do
+When(/^удаляет автомобиль$/) do
   click_on('delete_car')
 end
 
-When(/^увижу надпись "([^"]*)"$/) do |message|
-  page.has_content?(message)
+When(/^у перевозчика есть машина$/) do
+  create(:car, user: @user)
+end
+
+When(/^переходит на страницу редактирования автомобиля$/) do
+  visit('my_profile')
+  click_on('edit_car')
+end
+
+When(/^меняет название на "([^"]*)" грузоподъёмность "([^"]*)" объём "([^"]*)" загрузка "([^"]*)" тип "([^"]*)"$/) do |desc, weight, volume, load_type, car_type|
+  fill_in('car_about', with: desc)
+  select(weight)
+  select(volume)
+  select(load_type)
+  select(car_type)
+  click_on('create_car')
+end
+
+When(/^данные машины изменятся на "([^"]*)", "([^"]*)", "([^"]*)", "([^"]*)", "([^"]*)"$/) do |desc, weight, volume, load_type, car_type|
+  page.has_content?(desc)
+  page.has_content?(weight)
+  page.has_content?(volume)
+  page.has_content?(load_type)
+  page.has_content?(car_type)
 end

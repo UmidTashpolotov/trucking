@@ -1,14 +1,11 @@
 FactoryGirl.define do
 
   factory :car do
-    name {Faker::Name.first_name}
-    surname {Faker::Name.last_name}
-    phone {'0555 555s 555'}
-    email {Faker::Internet.email}
-    password {'qweqwe'}
-    password_confirmation {'qweqwe'}
-    active {true}
-
+    about {Faker::Company.name}
+    weight {Car::WEIGHT_SAMPLE.sample}
+    volume {Car::VOLUME_SAMPLE.sample}
+    load_type {Car::LOAD_TYPE_SAMPLE.sample}
+    car_type {Car::CAR_TYPE_SAMPLE.sample}
   end
 
 end
