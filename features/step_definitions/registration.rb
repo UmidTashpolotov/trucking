@@ -19,10 +19,6 @@ When(/^я увижу "([^"]*)"$/) do |hello_message|
   page.has_content?(hello_message)
 end
 
-When(/^я перейду на страницу моего профиля$/) do
-  visit('/my_profile')
-end
-
 When(/^я увижу свои данные$/) do |table|
   # table is a table.hashes.keys # => [:email, :role]
   page.has_content?(table.hashes[0][:email])

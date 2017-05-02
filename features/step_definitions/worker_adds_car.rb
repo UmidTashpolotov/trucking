@@ -6,7 +6,7 @@ When(/^я захожу на сайт как водитель с email "([^"]*)" 
   click_on('log_in_button')
 end
 
-When(/^создам машину с данными$/) do |table|
+When(/^создаст машину с данными$/) do |table|
   click_on('add_car')
   fill_in('car_about', with: table.hashes[0][:desc])
   select(table.hashes[0][:weight])
@@ -16,7 +16,7 @@ When(/^создам машину с данными$/) do |table|
   click_on('create_car')
 end
 
-When(/^я увижу машину c этими параметрами в своём профиле$/) do |table|
+When(/^он увидит машину c этими параметрами в своём профиле$/) do |table|
   page.has_content?(table.hashes[0][:desc])
   page.has_content?(table.hashes[0][:weight])
   page.has_content?(table.hashes[0][:volume])

@@ -57,12 +57,14 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Before do |scenario|
-  load Rails.root.join('db/seeds.rb')
-end
+# Before do |scenario|
+#   load Rails.root.join('db/seeds.rb')
+# end
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
 Capybara.javascript_driver = :selenium
+
+World(FactoryGirl::Syntax::Methods)
