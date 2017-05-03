@@ -56,7 +56,6 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   	about: Faker::Lorem.paragraphs,
   	user: worker,
   	order: order)
-
 end
 
 admin = User.create(
