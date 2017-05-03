@@ -2,7 +2,6 @@
   @user = create(:worker)
 end
 
-
 Допустим(/^в приложении есть заказчик/) do
   @user = create(:customer)
 end
@@ -27,4 +26,8 @@ end
 
 When(/^увидит надпись "([^"]*)"$/) do |message|
   page.has_content?(message)
+end
+
+When(/^перевозчик с почтой "([^"]*)"$/) do |email|
+  create(:worker, email: email)
 end
