@@ -1,16 +1,8 @@
-When(/^я захожу на сайт как клиент с email "([^"]*)" password "([^"]*)"$/) do |email, password|
-  visit('/')
-  click_on('log_in')
-  fill_in('Email', with: email)
-  fill_in('Пароль', with: password)
-  click_on('log_in_button')
-end
-
-When(/^я перейду на страницу создания заказа$/) do
+When(/^он перейдёт на страницу создания заказа$/) do
   visit('/orders/new')
 end
 
-When(/^заполню форму данными$/) do |table|
+When(/^заполнит форму данными$/) do |table|
   # table is a table.hashes.keys # => [:from, :to, :what, :cost, :desc]
   fill_in('Откуда', with: table.hashes[0][:from])
   fill_in('Куда', with: table.hashes[0][:to])
@@ -19,11 +11,11 @@ When(/^заполню форму данными$/) do |table|
   fill_in('Описание', with: table.hashes[0][:desc])
 end
 
-When(/^нажму на кнопку создать заказ$/) do
+When(/^нажмёт на кнопку создать заказ$/) do
   click_on('create_order')
 end
 
-When(/^меня перенаправит на страницу моих заказов и я увижу там мой заказ$/) do |table|
+When(/^его перенаправит на страницу своих заказов и он увидит там свой заказ$/) do |table|
   # table is a table.hashes.keys # => [:from, :to, :what, :cost, :desc]
   assert page.has_content?(table.hashes[0][:from])
   assert page.has_content?(table.hashes[0][:to])
@@ -32,21 +24,11 @@ When(/^меня перенаправит на страницу моих зака
   assert page.has_content?(table.hashes[0][:desc])
 end
 
-When(/^я нахожусь на странице просмотра заказа как клиент email "([^"]*)" password "([^"]*)"$/) do |email, password|
-  visit('/')
-  click_on('log_in')
-  fill_in('Email', with: email)
-  fill_in('Пароль', with: password)
-  click_on('log_in_button')
-  visit('/orders/')
-  click_on('Информация')
+When(/^у клиента есть заказ в статусе open$/) do
+  create(:order, user: @user)
 end
 
-When(/^у заказа статус open$/) do
-  assert page.has_content?('open')
-end
-
-When(/^я увижу кнопку удалить заказ$/) do
+When(/^он увидит кнопку удалить заказ$/) do
   assert page.has_content?('Удалить заказ')
 end
 
@@ -56,4 +38,9 @@ end
 
 When(/^статус заказа перейдёт в closed$/) do
   assert page.has_content?('closed')
+end
+
+When(/^он перейдёт на страницу просмотра этого заказа$/) do
+  visit('/orders/')
+  click_on('Информация')
 end
