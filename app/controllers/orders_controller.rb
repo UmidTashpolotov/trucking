@@ -3,7 +3,15 @@ class OrdersController < ApplicationController
   load_and_authorize_resource
 
 	def index
-		@orders = Order.all
+    if user_signed_in?
+      if current_user.role == 'customer'
+        @orders = current_user.orders
+      elsif current_user.role == 'worker'
+        @orders = Order.where(status: 'open')
+      end
+    else
+      @orders = Order.where(status: 'open').limit(10)
+    end
 	end
 
 	def show
