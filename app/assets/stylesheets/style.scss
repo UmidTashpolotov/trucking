@@ -73,9 +73,12 @@ body,html{
     nav.sidebar{
       width: 200px;
       height: 100%;
-      margin-left: -160px;
+      margin-left: 0px;
       float: left;
       margin-bottom: 0px;
+      position: fixed;
+      top: 50px;
+      left : 0; 
     }
 
     nav.sidebar li {
