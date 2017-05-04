@@ -31,3 +31,7 @@ end
 When(/^перевозчик с почтой "([^"]*)"$/) do |email|
   create(:worker, email: email)
 end
+
+When(/^у заказчика есть заказ$/) do
+  create(:order, user: @user)
+end
