@@ -33,5 +33,5 @@ When(/^перевозчик с почтой "([^"]*)"$/) do |email|
 end
 
 When(/^у заказчика есть заказ$/) do
-  create(:order, user: @user)
+  @order =create(:order, user: @user)
 end

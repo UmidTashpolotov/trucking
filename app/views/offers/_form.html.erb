@@ -1,8 +1,8 @@
 <%= simple_form_for [@order, @offer] do |f| %>
     <div class="form-group">
-      <%= f.input :about %>
+      <%= f.input :about, label: 'Я готов отвезти за:' %>
     </div>
     <div class="form-group">
-      <%= f.submit "Предложить", class: "btn btn-primary btn-block btn-lg" %>
+      <%= f.submit "Предложить", class: "btn btn-primary btn-block btn-lg", id: 'create_offer' %>
     </div>
 <% end %>

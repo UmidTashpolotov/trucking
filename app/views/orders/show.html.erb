@@ -25,10 +25,11 @@
         <%= render @order.comments %>
         <hr>
         <% if can? :offer, @order and @order.offers.where(user: current_user).empty? %>
+            <h3>Предложите свою цену:</h3>
             <%= render 'offers/form', order: @order %>
         <% end %>
         <hr>
-        <h1><small class="pull-right"><%= @order.offers.count %> предложений</small></h1>
+        <h1><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h1>
         <% if can? :read, @offer %>
             <% if @order.status =="open" %>
                 <%= render @order.offers %>

@@ -16,8 +16,8 @@
           <%= offer.about %>
           <p>
             <small>
-              <%= link_to 'Удалить', offer_path(offer), method: 'delete' if can? :destroy, offer %>
-              <%= link_to 'Изменить', edit_offer_path(offer) if can? :update, offer %>
+              <%= link_to 'Удалить', offer_path(offer), id: 'delete_offer', method: 'delete' if can? :destroy, offer %>
+              <%= link_to 'Изменить', edit_offer_path(offer), id: 'change_offer_price' if can? :update, offer %>
               <% unless offer.accepted %>
                   <%= link_to 'Принять', accept_offer_path(offer), class: "btn btn-success", method: :post if can? :accept, offer %>
                   <% else %>
