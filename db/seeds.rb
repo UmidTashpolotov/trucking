@@ -6,7 +6,7 @@ volumes = [1000, 5000, 10000, 20000]
 transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '10 тонн',
               'фура 20 тонн']
 
-5.times do |i|
+25.times do |i|
   customer = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,

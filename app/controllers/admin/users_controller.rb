@@ -16,6 +16,7 @@ class Admin::UsersController < AdminController
               else
                 User.all
               end
+    @users = @users.page(params[:page]).per(10)
   end
 
   def inactive

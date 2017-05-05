@@ -54,3 +54,10 @@ ru:
         payment_method: Метод оплаты
         temperature_regime: Температурный режим
         loading_type: Метод погрузки
+  views:
+    pagination:
+      first: "Первая"
+      previous: "Предыдущая"
+      next: "Следующая"
+      last: "Последняя"
+      truncate: "..."

@@ -9,5 +9,6 @@
     <% else %>
         <%= render partial: 'promo', collection: @orders.reverse, as: :order %>
     <% end %>
+    <%= paginate @orders, :theme => 'twitter-bootstrap-3' %>
   </div>
 </div>

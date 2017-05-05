@@ -32,7 +32,9 @@
         <h1><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h1>
         <% if can? :read, @offer %>
             <% if @order.status =="open" %>
-                <%= render @order.offers %>
+                <% @offers = @order.offers.page(params[:page]).per(10)%>
+                <%= render @offers %>
+                <%= paginate @offers, :theme => 'twitter-bootstrap-3' %>
             <% else %>
                 <%= render @order.selected_offer %>
             <% end %>
