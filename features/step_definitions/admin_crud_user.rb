@@ -47,6 +47,7 @@ When(/^я увижу измененого водителя "([^"]*)" на стр
 end
 
 When(/^нажимаю кнопку Удалить напротив водителя "([^"]*)"$/) do |email|
+  sleep 4
   find(:xpath, "//*[contains(text(), '#{email}')]/../..//a[contains(@class,'btn btn-xs btn-danger')]").click
   accept_confirm
 end

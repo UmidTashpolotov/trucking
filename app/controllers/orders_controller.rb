@@ -4,10 +4,12 @@ class OrdersController < ApplicationController
 
 	def index
     if user_signed_in?
-      if current_user.role == 'customer'
+      if current_user.customer?
         @orders = current_user.orders.page(params[:page]).per(10)
-      elsif current_user.role == 'worker'
+      elsif current_user.worker?
         @orders = Order.where(status: 'open').page(params[:page]).per(10)
+      else
+        @orders = Order.all.page(params[:page]).per(10)
       end
     else
       @orders = Order.where(status: 'open').limit(10).page(params[:page]).per(10)
