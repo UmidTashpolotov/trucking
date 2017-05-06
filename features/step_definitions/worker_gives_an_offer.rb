@@ -16,7 +16,7 @@ When(/^предложение с ценой "([^"]*)" будет видно по
 end
 
 When(/^у перевозчика есть предложение с ценой "([^"]*)"$/) do |price|
-  create(:offer, order: @order, user: @user, about: price)
+  @offer = create(:offer, order: @order, user: @user, about: price)
 end
 
 When(/^он поменяет своё предложение на "([^"]*)"$/) do |price|

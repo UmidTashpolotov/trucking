@@ -1,9 +1,9 @@
 Допустим(/^в приложении есть перевозчик/) do
-  @user = create(:worker)
+  @user = @worker = create(:worker)
 end
 
 Допустим(/^в приложении есть заказчик/) do
-  @user = create(:customer)
+  @user = @customer = create(:customer)
 end
 
 Допустим(/^в приложении есть администратор$/) do
@@ -33,5 +33,5 @@ When(/^перевозчик с почтой "([^"]*)"$/) do |email|
 end
 
 When(/^у заказчика есть заказ$/) do
-  @order =create(:order, user: @user)
+  @order = create(:order, user: @user)
 end
