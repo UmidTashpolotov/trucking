@@ -1,19 +1,21 @@
-<table class="table table-striped custab">
-  <thead>
-  <%= link_to '+Добавить документ', new_document_path, class: 'btn btn-primary btn-xs pull-right' %>
-  <tr>
-    <th>Название</th>
-    <th>Изображение</th>
-    <th class="text-center">Действие</th>
-  </tr>
-  </thead>
-<% @documents.each do |doc| %>
-      <tr>
-        <td><%= doc.title %> </td>
-        <td><%= link_to (image_tag doc.image.thumb), document_path(doc) %></td>
-        <td class="text-center">
-          <%= link_to '<i class="glyphicon glyphicon-edit"></i> Редактировать'.html_safe, edit_document_path(doc), class: 'btn btn-info btn-xs' %>
-        </td>
-      </tr>
-<% end %>
-</table>
+<div class="col-md-10 col-md-offset-2 toppad">
+  <table class="table table-striped custab">
+    <thead>
+    <%= link_to '+Добавить документ', new_document_path, class: 'btn btn-primary btn-xs pull-right' %>
+    <tr>
+      <th>Название</th>
+      <th>Изображение</th>
+      <th class="text-center">Действие</th>
+    </tr>
+    </thead>
+  <% @documents.each do |doc| %>
+        <tr>
+          <td><%= doc.title %> </td>
+          <td><%= link_to (image_tag doc.image.thumb), document_path(doc) %></td>
+          <td class="text-center">
+            <%= link_to '<i class="glyphicon glyphicon-edit"></i> Редактировать'.html_safe, edit_document_path(doc), class: 'btn btn-info btn-xs' %>
+          </td>
+        </tr>
+  <% end %>
+  </table>
+</div>
