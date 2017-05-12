@@ -1,0 +1,16 @@
+I, [2017-05-10T19:03:36.689779 #14425]  INFO -- : Refreshing Gem list
+I, [2017-05-10T19:03:38.528111 #14425]  INFO -- : listening on addr=/home/almighty/RubymineProjects/trucking/shared/sockets/unicorn.sock fd=14
+I, [2017-05-10T19:03:38.528241 #14425]  INFO -- : worker=0 spawning...
+I, [2017-05-10T19:03:38.529934 #14425]  INFO -- : worker=1 spawning...
+I, [2017-05-10T19:03:38.530350 #14434]  INFO -- : worker=0 spawned pid=14434
+I, [2017-05-10T19:03:38.530484 #14434]  INFO -- : worker=0 ready
+I, [2017-05-10T19:03:38.531659 #14425]  INFO -- : master process ready
+I, [2017-05-10T19:03:38.532037 #14437]  INFO -- : worker=1 spawned pid=14437
+I, [2017-05-10T19:03:38.532158 #14437]  INFO -- : worker=1 ready
+/home/almighty/.rvm/gems/ruby-2.3.4/gems/unicorn-5.3.0/lib/unicorn/http_server.rb:205:in `pid=': Already running on PID:14425 (or pid=/home/almighty/RubymineProjects/trucking/shared/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/almighty/.rvm/gems/ruby-2.3.4/gems/unicorn-5.3.0/lib/unicorn/http_server.rb:137:in `start'
+	from /home/almighty/.rvm/gems/ruby-2.3.4/gems/unicorn-5.3.0/bin/unicorn:126:in `<top (required)>'
+	from /home/almighty/.rvm/gems/ruby-2.3.4/bin/unicorn:22:in `load'
+	from /home/almighty/.rvm/gems/ruby-2.3.4/bin/unicorn:22:in `<main>'
+	from /home/almighty/.rvm/gems/ruby-2.3.4/bin/ruby_executable_hooks:15:in `eval'
+	from /home/almighty/.rvm/gems/ruby-2.3.4/bin/ruby_executable_hooks:15:in `<main>'

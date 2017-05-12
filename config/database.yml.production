@@ -1,0 +1,11 @@
+default: &default
+ adapter: postgresql
+ pool: 5
+ host: localhost
+ timeout: 5000
+
+production:
+ <<: *default
+ username: trucking
+ password: <%= ENV['TRUCKING_DATABASE_PASSWORD'] %>
+ database: db/production
