@@ -22,12 +22,13 @@
                   <%= link_to 'Принять', accept_offer_path(offer), class: "btn btn-success", method: :post if can? :accept, offer %>
                   <% else %>
               <%= link_to 'Расторгнуть!', reject_offer_path(offer), class: "btn btn-danger", method: :post if can? :reject, offer %>
-                  <% end %>
+                  <% end %>                  
             </small>
+            <h3><span class="label label-default"><%= offer.user.phone if offer.accepted?%></span></h3>
           </p>
-
         </div>
       </div>
     </div>
   </div>
 </div>
+  
