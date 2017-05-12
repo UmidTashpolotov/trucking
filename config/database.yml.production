@@ -6,6 +6,6 @@ default: &default
 
 production:
  <<: *default
- username: trucking
- password: <%= ENV['TRUCKING_DATABASE_PASSWORD'] %>
+ username: web_app
+ password: <%= ENV['WEB_APP_DATABASE_PASSWORD'] %>
  database: db/production
