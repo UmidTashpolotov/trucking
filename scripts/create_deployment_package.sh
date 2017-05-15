@@ -8,6 +8,8 @@ RAILS_ENV=production rake assets:precompile
 
 echo ${build_number} > VERSION
 
+mkdir artifacts
+
 tar -czf ${HOME}/artifacts/trucking_${build_number}.tar.gz \
 --exclude=README.md \
 --exclude=LICENSE \
