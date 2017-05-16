@@ -2,9 +2,7 @@
 
 set -e
 
-directory=pwd
-
-mkdir -p ${directory}/artifacts
+mkdir -p /var/lib/jenkins/artifacts
 
 build_number=${1}
 
