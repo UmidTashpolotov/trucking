@@ -24,3 +24,11 @@ production:
 
 cucumber:
  <<: *test
+
+# traccar gps server db
+traccar_db:
+ adapter: postgresql
+ host:
+ database:
+ user:
+ password:

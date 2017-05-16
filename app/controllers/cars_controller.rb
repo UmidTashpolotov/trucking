@@ -36,6 +36,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:about, :weight, :volume, :load_type, :car_type)
+    params.require(:car).permit(:about, :weight, :volume, :load_type, :car_type, :imei)
   end
 end
