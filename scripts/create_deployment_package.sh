@@ -20,6 +20,7 @@ tar -czf ${HOME}/artifacts/trucking_${build_number}.tar.gz \
 --exclude=.idea \
 --exclude-vcs \
 --exclude=*.log \
+--exclude=public/uploads/* \
 --exclude=shared/log/* \
 --exclude=shared/pids/* \
 --exclude=shared/sockets/* \
