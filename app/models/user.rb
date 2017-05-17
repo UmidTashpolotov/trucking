@@ -56,18 +56,21 @@ class User < ApplicationRecord
   end
 
   def cars_with_gps
-    @cars = []
-    if worker? || !cars.blank?
-      cars.each { |car| @cars << car unless car.imei.blank? }
-    end
-    @cars
+    return unless worker_with_cars
+    @cars_with_gps = []
+    cars.each { |car| @cars_with_gps << car unless car.imei.blank? }
+    @cars_with_gps
   end
 
   def search_devices
     return unless worker?
-    @cars = cars_with_gps
     @devices = []
-    @cars.each { |car| @devices << car.device }
+    cars_with_gps.each { |car| @devices << car.device }
     @devices
   end
+
+  def worker_with_cars
+    worker? || !cars.blank?
+  end
+
 end
