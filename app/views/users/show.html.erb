@@ -41,14 +41,16 @@
         </div>
       </div>
     </div>
-    <div class="panel-footer">
-      <%= link_to 'Редактировать имя или телефон', edit_path, class: 'btn btn-success' %>
-      <%= link_to 'Изменить пароль', edit_user_registration_path(current_user), class: 'btn btn-success' %>
-      <%= link_to 'Добавить документы', documents_path, class: 'btn btn-info' if can? :read, Document %>
-      <%= link_to 'Добавить машину', add_car_path, class: 'btn btn-info', id: 'add_car' if can? :create, Car %>
-    </div>
+    <% if @user == current_user %>
+      <div class="panel-footer">
+        <%= link_to 'Редактировать имя или телефон', edit_path, class: 'btn btn-success' %>
+        <%= link_to 'Изменить пароль', edit_user_registration_path(current_user), class: 'btn btn-success' %>
+        <%= link_to 'Добавить документы', documents_path, class: 'btn btn-info' if can? :read, Document %>
+        <%= link_to 'Добавить машину', add_car_path, class: 'btn btn-info', id: 'add_car' if can? :create, Car %>
+      </div>
+    <% end %>
   </div>
-  <%= render 'cars/panel' if current_user.worker? %>
+  <%= render 'cars/panel' if @user.worker? %>
   <% if @user.worker? || !@devices.blank? %>
     <div style='width: 800px;'>
       <div id="multi_markers" style='width: 823px; height: 400px;'></div>

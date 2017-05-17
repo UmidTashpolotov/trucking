@@ -15,9 +15,9 @@
       </tr>
       </thead>
       <tbody>
-        <%= render current_user.cars unless current_user.cars.blank? %>
+        <%= render @user.cars unless @user.cars.blank? %>
       </tbody>
     </table>
-    <%= content_tag(:h3, 'Вы не добавили ни одну машину', class: 'text-center') if current_user.cars.blank? %>
+    <%= content_tag(:h3, 'Нет ни одной машины', class: 'text-center') if @user.cars.blank? %>
   </div>
 </div>

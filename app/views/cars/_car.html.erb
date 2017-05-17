@@ -5,7 +5,7 @@
   <td><%= car.load_type %></td>
   <td><%= car.car_type %></td>
   <td>
-    <%= link_to 'Изменить', edit_car_path(car), id: 'edit_car' %>
-    <%= link_to 'Удалить', car_path(car), method: :delete, id: 'delete_car' %>
+    <%= link_to 'Изменить', edit_car_path(car), id: 'edit_car' if can? :manage, Car and car.user == current_user %>
+    <%= link_to 'Удалить', car_path(car), method: :delete, id: 'delete_car' if can? :manage, Car and car.user == current_user %>
   </td>
 </tr>
