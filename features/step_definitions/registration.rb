@@ -4,6 +4,7 @@ When(/^я нажму на кнопку зарегистрироваться$/) d
 end
 
 When(/^я введу данные$/) do |table|
+
   # table is a table.hashes.keys # => [:email, :password, :password_confirmation, :role]
   fill_in('Email', with: table.hashes[0][:email])
   fill_in('Пароль', with: table.hashes[0][:password])

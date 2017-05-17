@@ -4,6 +4,8 @@ ru:
   become_driver: "Стать перевозчиком"
   sign_up: "Зарегистрироваться"
   sign_in: "Войти на сайт"
+  forgot_your_password: "Забыли пароль?"
+  send_me_reset_password_instructions: "Восстановить пароль"
   some_options: "Какие-то опции"
   action: "Действие"
   another_action: "Другое действие"
@@ -11,14 +13,17 @@ ru:
   exit: "Выход"
   update_profile: "Обновление данных профиля:"
   profile: "Профиль"
-  name: имя
-  surname: фамилия
-  phone: телефон
-  car: машина
-  document: документы
-  fill_in: Заполнить
+  name: "имя"
+  surname: "фамилия"
+  phone: "телефон"
+  car: "машина"
+  document: "документы"
+  fill_in: "Заполнить"
   fill_it: "Добавьте о себе следующую информацию:"
   profile_complete_status: "Ваш профиль заполнен на"
+  characters_minimum: "символов минимум"
+  customer: Заказчик
+  worker: Перевозчик
 
   activerecord:
     models:
@@ -35,8 +40,13 @@ ru:
         phone: Телефон
         password: Пароль
         password_confirmation: Подтверждение пароля
+        remember_me: "Запомнить меня"
       car:
         about: Описание
+        weight: Вес
+        volume: Объем
+        load_type: Метод погрузки
+        car_type: Тип транспорта
       document:
         title: Название
       offer:
