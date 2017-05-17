@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = !params[:id].nil? ? User.find(params[:id]) : current_user
+    @devices = @user.search_devices
   end
 
   def edit

@@ -49,6 +49,14 @@
     </div>
   </div>
   <%= render 'cars/panel' if current_user.worker? %>
+  <% if @user.worker? || !@devices.blank? %>
+    <div style='width: 800px;'>
+      <div id="multi_markers" style='width: 823px; height: 400px;'></div>
+    </div>
+    <script>
+      <%= render 'show.js.erb' %>
+    </script>
+  <% end %>
   <h3>Отзывы:</h3>
   <%= render @user.comments %>
 </div>

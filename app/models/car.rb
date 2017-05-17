@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :user
+  has_one :device, foreign_key: 'uniqueid', primary_key: 'imei'
 
   validates :about, presence: true
   validates :weight, presence: true

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
+  validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
 
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy
@@ -52,6 +52,22 @@ class User < ApplicationRecord
     blank_fields << 'car' if cars.blank? && role == 'worker'
     blank_fields << 'document' if documents.blank? && role == 'worker'
 
-    return blank_fields
+    blank_fields
+  end
+
+  def cars_with_gps
+    @cars = []
+    if worker? || !cars.blank?
+      cars.each { |car| @cars << car unless car.imei.blank? }
+    end
+    @cars
+  end
+
+  def search_devices
+    return unless worker?
+    @cars = cars_with_gps
+    @devices = []
+    @cars.each { |car| @devices << car.device }
+    @devices
   end
 end
