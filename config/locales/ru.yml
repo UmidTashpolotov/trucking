@@ -1,5 +1,5 @@
 ru:
-  hello: "Привет, мир"
+  hello: Привет
   signin_as_driver: "Войти как водитель"
   become_driver: "Стать перевозчиком"
   sign_up: "Зарегистрироваться"
@@ -24,6 +24,12 @@ ru:
   characters_minimum: "символов минимум"
   customer: Заказчик
   worker: Перевозчик
+  account: Аккаунт
+  edit_ptofile: Изменить профиль
+  sign_out: Выйти
+  car_create: Ваша машина добавлена
+  car_update: Ваша машина изменена
+  car_destroy: Ваша машина удалена
 
   activerecord:
     models:

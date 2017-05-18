@@ -9,7 +9,7 @@ class CarsController < ApplicationController
   def create
     @car = current_user.cars.create(car_params)
     if @car.save
-      redirect_to my_profile_path, notice: "Your car has been created"
+      redirect_to my_profile_path, notice: (t 'car_create')
     else
       render :new
     end
@@ -22,7 +22,7 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
     if @car.update(car_params)
-    redirect_to my_profile_path, notice: "Your car has been updated"
+    redirect_to my_profile_path, notice: (t 'car_update')
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class CarsController < ApplicationController
 
   def destroy
     Car.find(params[:id]).destroy
-    redirect_to my_profile_path, notice: "Your car has been deleted"
+    redirect_to my_profile_path, notice: (t 'car_destroy')
   end
 
   private
