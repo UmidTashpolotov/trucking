@@ -6,6 +6,7 @@ FactoryGirl.define do
     volume {Car::VOLUME_SAMPLE.sample}
     load_type {Car::LOAD_TYPE_SAMPLE.sample}
     car_type {Car::CAR_TYPE_SAMPLE.sample}
+    imei {'0000000000000001'}
   end
 
 end

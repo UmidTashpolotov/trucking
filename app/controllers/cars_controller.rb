@@ -23,13 +23,17 @@ class CarsController < ApplicationController
   def edit
     @car = Car.find(params[:id])
   end
-
+# @TODO refactor this shit!
   def update
     @car = Car.find(params[:id])
     @before_update_imei = @car.imei
     if @car.update(car_params)
       @device = Device.find_by uniqueid: @before_update_imei
-      @device.update(uniqueid: @car.imei)
+      if @car.imei.blank? && @car.has_tracker?
+        @device.destroy
+      elseif @car.has_tracker? && !car.imei.blank?
+        @device.update(uniqueid: @car.imei)
+      end
       redirect_to my_profile_path, notice: (t 'car_update')
     else
       render :edit
