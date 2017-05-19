@@ -1,0 +1,19 @@
+<div class="col-md-offset-2">
+  <div style='width: 800px;'>
+    <div id="one_marker" style='width: 823px; height: 400px;'></div>
+  </div>
+</div>
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({internal: {id: 'one_marker'}}, function () {
+    markers = handler.addMarkers([
+      {
+        lat: <%= @car.device.positions.last.latitude %>,
+        lng: <%= @car.device.positions.last.longitude %>,
+      },
+    ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(14);
+  });
+</script>

@@ -6,9 +6,14 @@ class CarsController < ApplicationController
     @car = Car.new
   end
 
+  def show
+    @car = Car.find(params[:id])
+  end
+
   def create
-    @car = current_user.cars.create(car_params)
+    @car = current_user.cars.new(car_params)
     if @car.save
+      Device.create(uniqueid: @car.imei, name: @car.user.name) unless @car.imei.blank?
       redirect_to my_profile_path, notice: (t 'car_create')
     else
       render :new
@@ -21,8 +26,11 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
+    @before_update_imei = @car.imei
     if @car.update(car_params)
-    redirect_to my_profile_path, notice: (t 'car_update')
+      @device = Device.find_by uniqueid: @before_update_imei
+      @device.update(uniqueid: @car.imei)
+      redirect_to my_profile_path, notice: (t 'car_update')
     else
       render :edit
     end
@@ -36,6 +44,7 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:about, :weight, :volume, :load_type, :car_type, :imei)
+    params.require(:car).permit(:about, :weight, :volume, :load_type, :car_type,
+                                :imei)
   end
 end

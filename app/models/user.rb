@@ -56,17 +56,13 @@ class User < ApplicationRecord
   end
 
   def cars_with_gps
-    return unless worker_with_cars
-    @cars_with_gps = []
-    cars.each { |car| @cars_with_gps << car unless car.imei.blank? }
-    @cars_with_gps
+    return [] unless worker_with_cars
+    cars.reject { |car| car.imei.blank? }
   end
 
   def search_devices
-    return unless worker?
-    @devices = []
-    cars_with_gps.each { |car| @devices << car.device }
-    @devices
+    return [] unless worker?
+    cars_with_gps.map(&:device)
   end
 
   def worker_with_cars
