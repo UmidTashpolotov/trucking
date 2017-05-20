@@ -11,6 +11,9 @@ project_root=${HOME}/web_app
 instance_name=${1}
 package_name=${2}
 
+cd ~
+mkdir lolkek
+
 service nginx stop             # Остановка сервисов
 service unicorn_trucking stop
 
