@@ -16,7 +16,7 @@ tar -czf ${HOME}/artifacts/trucking_${build_number}.tar.gz \
 --exclude=features \
 --exclude=cucumber* \
 --exclude=test \
---exclude=.tmp \
+--exclude=./tmp \
 --exclude=config/database.yml \
 --exclude=emul \
 --exclude=.idea \
