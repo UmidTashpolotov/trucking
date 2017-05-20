@@ -3,11 +3,11 @@
 set -e
 
 host=${1}
-keys_folder={2}
-ssh_key={3}
+keys_folder=${2}
+ssh_key=${3}
 
-instance_name={4}
-build_number={5}
+instance_name=${4}
+build_number=${5}
 
 package_name=trucking_${build_number}.tar.gz
 package_path=/var/lib/jenkins/artifacts/${package_name}
