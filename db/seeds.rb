@@ -10,9 +10,8 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   customer = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
-  	phone: '0555 555 555', 
-  	role: 'customer', 
-  	email: 'customer' + "#{i}" + '@mail.com',
+  	phone: '0555 22 33' + "#{i}",
+  	role: 'customer',
   	password: 'qweqwe', 
   	password_confirmation: 'qweqwe',
 		active: true)
@@ -35,9 +34,8 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   worker = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
-  	phone: '0555 555 555',
+		phone: '777 22 33' + "#{i}",
   	role: 'worker',
-  	email: 'worker' + "#{i}" + '@mail.com',
   	password: 'qweqwe',
   	password_confirmation: 'qweqwe',
   	active: true)
@@ -62,7 +60,6 @@ admin = User.create(
 	name: 'Admin', 
 	surname: 'Adminov', 
 	phone: '000000000', 
-	role: 'admin', 
-	email: 'admin@mail.com', 
+	role: 'admin',
 	password: 'qweqwe', 
 	password_confirmation: 'qweqwe')

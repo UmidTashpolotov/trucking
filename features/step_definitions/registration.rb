@@ -4,9 +4,8 @@ When(/^я нажму на кнопку зарегистрироваться$/) d
 end
 
 When(/^я введу данные$/) do |table|
-
-  # table is a table.hashes.keys # => [:email, :password, :password_confirmation, :role]
-  fill_in('Email', with: table.hashes[0][:email])
+  # table is a table.hashes.keys # => [:phone, :password, :password_confirmation, :role]
+  fill_in('Телефон', with: table.hashes[0][:phone])
   fill_in('Пароль', with: table.hashes[0][:password])
   fill_in('Подтверждение пароля', with: table.hashes[0][:password_confirmation])
   choose(table.hashes[0][:role])
@@ -21,7 +20,7 @@ When(/^я увижу "([^"]*)"$/) do |hello_message|
 end
 
 When(/^я увижу свои данные$/) do |table|
-  # table is a table.hashes.keys # => [:email, :role]
-  page.has_content?(table.hashes[0][:email])
+  # table is a table.hashes.keys # => [:phone, :role]
+  page.has_content?(table.hashes[0][:phone])
   page.has_content?(table.hashes[0][:role])
 end

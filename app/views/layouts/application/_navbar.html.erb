@@ -14,7 +14,7 @@
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
             <p class="navbar-text">
-              <%= t 'hello'%>, <%= link_to current_user.email, class: 'navbar-link' %>
+              <%= t 'hello'%>, <%= link_to current_user.phone, class: 'navbar-link' %>
             </p>
             <ul class="nav navbar-nav">
               <li class="dropdown">

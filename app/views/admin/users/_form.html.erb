@@ -9,7 +9,6 @@
   <div class="row">
     <%= simple_form_for ([:admin, @user]) do |f| %>
           <%= f.input :role, collection: %w[admin customer worker], selected: 'worker' %>
-          <%= f.input :email, id: 'user_email' %>
           <%= f.input :name, id: 'user_name' %>
           <%= f.input :surname, id: 'user_surname' %>
           <%= f.input :phone, id: 'user_phone' %>

@@ -8,23 +8,23 @@
   Сценарий: Регистрация с ролью перевозчик
     Допустим я нажму на кнопку зарегистрироваться
     Если я введу данные
-      | email             | password  | password_confirmation | role                 |
-      | email@example.com | qweqwe    | qweqwe                | user_role_worker     |
+      | phone      | password  | password_confirmation | role                 |
+      | 0555223344 | qweqwe    | qweqwe                | user_role_worker     |
     И нажму кнопку Зарегистрироваться
     То я увижу "Добро пожаловать! Вы успешно зарегистрировались."
     Если переходит на страницу своего профиля
     То я увижу свои данные
-      | email             | role       |
-      | email@example.com | worker     |
+      | phone       | role       |
+      | 0555223344  | worker     |
 
   Сценарий: Регистрация с ролью заказчик
     Допустим я нажму на кнопку зарегистрироваться
     Если я введу данные
-      | email             | password  | password_confirmation | role                     |
-      | email@example.com | qweqwe    | qweqwe                | user_role_customer       |
+      | phone       | password  | password_confirmation | role                     |
+      | 0555556677  | qweqwe    | qweqwe                | user_role_customer       |
     И нажму кнопку Зарегистрироваться
     То я увижу "Добро пожаловать! Вы успешно зарегистрировались."
     Если переходит на страницу своего профиля
     То я увижу свои данные
-      | email             | role         |
-      | email@example.com | customer     |
+      | phone       | role         |
+      | 0555556677  | customer     |

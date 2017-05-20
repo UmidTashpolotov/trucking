@@ -4,7 +4,6 @@ end
 
 When(/^ввожу данные$/) do |table|
   within('#new_user') do
-    fill_in('Email', with: table.hashes[0][:email])
     fill_in('Имя', with: table.hashes[0][:name])
     fill_in('Фамилия', with: table.hashes[0][:surname])
     fill_in('Телефон', with: table.hashes[0][:phone])
@@ -25,13 +24,12 @@ When(/^захожу на страницу пользователей в адми
   visit('/admin/users')
 end
 
-When(/^нажимаю кнопку Edit напротив водителя "([^"]*)"$/) do |email|
-  find(:xpath, "//*[contains(text(), '#{email}')]/../..//a[contains(@class,'btn btn-xs btn-default')]").click
+When(/^нажимаю кнопку Edit напротив водителя "([^"]*)"$/) do |phone|
+  find(:xpath, "//*[contains(text(), '#{phone}')]/../..//a[contains(@class,'btn btn-xs btn-default')]").click
 end
 
 When(/^введу новые данные$/) do |table|
   within('.edit_user') do
-    fill_in('Email',   with: table.hashes[0][:email])
     fill_in('Имя',     with: table.hashes[0][:name])
     fill_in('Фамилия', with: table.hashes[0][:surname])
     fill_in('Телефон', with: table.hashes[0][:phone])
@@ -46,13 +44,13 @@ When(/^я увижу измененого водителя "([^"]*)" на стр
   assert page.has_content?(name)
 end
 
-When(/^нажимаю кнопку Удалить напротив водителя "([^"]*)"$/) do |email|
-  find(:xpath, "//*[contains(text(), '#{email}')]/../..//a[contains(@class,'btn btn-xs btn-danger')]").click
+When(/^нажимаю кнопку Удалить напротив водителя "([^"]*)"$/) do |phone|
+  find(:xpath, "//*[contains(text(), '#{phone}')]/../..//a[contains(@class,'btn btn-xs btn-danger')]").click
   accept_confirm
 end
 
-When(/^я не увижу пользователя "([^"]*)" на странице всех водителей$/) do |email|
-  assert(page.has_no_content?(email))
+When(/^я не увижу пользователя "([^"]*)" на странице всех водителей$/) do |phone|
+  assert(page.has_no_content?(phone))
 end
 
 When(/^я захожу на главную страницу$/) do
@@ -64,9 +62,9 @@ When(/^нажимаю кнопку Sign up$/) do
 end
 
 When(/^на странице регистрации ввожу данные$/) do |table|
-  @email = table.hashes[0][:email]
+  @email = table.hashes[0][:phone]
   within("#new_user") do
-    fill_in('Email',                      with: table.hashes[0][:email])
+    fill_in('Phone',                      with: table.hashes[0][:phone])
     fill_in('Password',                   with: table.hashes[0][:password])
     fill_in('user_password_confirmation', with: table.hashes[0][:password_confirmation])
   end
@@ -76,6 +74,6 @@ When(/^я нажму кнопку Sign up$/) do
   click_button 'Sign up'
 end
 
-When(/^увижу свой email "([^"]*)" в навбаре$/) do |email|
-  assert page.has_content?(email)
+When(/^увижу свой телефон "([^"]*)" в навбаре$/) do |phone|
+  assert page.has_content?(phone)
 end

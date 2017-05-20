@@ -3,8 +3,7 @@ FactoryGirl.define do
   factory :user do
     name {Faker::Name.first_name}
     surname {Faker::Name.last_name}
-    phone {'0555 555s 555'}
-    email {Faker::Internet.email}
+    phone {'0555 555 555'}
     password {'qweqwe'}
     password_confirmation {'qweqwe'}
     active {true}

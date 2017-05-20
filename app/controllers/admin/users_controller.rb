@@ -16,7 +16,7 @@ class Admin::UsersController < AdminController
               else
                 User.all
               end
-    @users = @users.page(params[:page]).per(10)
+    @users = @users.page(params[:page]).per(10).order('created_at ASC')
   end
 
   def inactive

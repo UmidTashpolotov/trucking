@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
+         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:phone]
+	validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
 
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy
@@ -53,6 +53,14 @@ class User < ApplicationRecord
     blank_fields << 'document' if documents.blank? && role == 'worker'
 
     blank_fields
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
   end
 
   def cars_with_gps
