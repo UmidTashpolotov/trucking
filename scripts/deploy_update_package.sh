@@ -2,21 +2,28 @@
 
 set -e
 
-# sh 0 $script 1 $ssh_remote_host 2 $keys_folder 3 $ssh_key 4 demo 5 $PACKAGE_BUILD_NUMBER
-
 host=${1}
-keys_folder=${2}
-ssh_key=${3}
-instance_name=${4}
-build_number=${5}
-package_name=trucking_${build_number}.tar.gz
-package_name_path=${HOME}/artifacts/${package_name}
+keys_folder={2}
+ssh_key={3}
 
+instance_name={4}
+build_number={5}
+
+package_name=trucking_${build_number}.tar.gz
+package_path=/var/lib/jenkins/artifacts/${package_name}
+
+script_name=apply_update.sh
+script_path=/var/lib/jenkins/workspace/trucking/scripts/${script_name}
+
+echo "chmod keys"
 chmod 700 ${keys_folder}
 chmod 600 ${ssh_key}
 
-scp -i ${ssh_key} -p scripts/apply_update.sh ${host}:~
-scp -i ${ssh_key} ${package_name_path} ${host}:~
+echo "copy script"
+scp -i ${ssh_key} -p ${script_path} ${host}:~
+echo "copy package"
+scp -i ${ssh_key} ${package_path} ${host}:~
+echo "copy complete"
 
 ssh -i ${ssh_key} ${host} << EOL
 chmod +x apply_update.sh
