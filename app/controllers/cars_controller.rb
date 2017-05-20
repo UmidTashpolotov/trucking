@@ -31,7 +31,7 @@ class CarsController < ApplicationController
       @device = Device.find_by uniqueid: @before_update_imei
       if @car.imei.blank? && @car.has_tracker?
         @device.destroy
-      elseif @car.has_tracker? && !car.imei.blank?
+      elsif @car.has_tracker? && !car.imei.blank?
         @device.update(uniqueid: @car.imei)
       end
       redirect_to my_profile_path, notice: (t 'car_update')

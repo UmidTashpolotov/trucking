@@ -10,7 +10,7 @@ class Car < ApplicationRecord
   validates :volume, presence: true
   validates :car_type, presence: true
   validates :load_type, presence: true
-  validates :imei, uniqueness: true
+  validates :imei, uniqueness: true, allow_nil: true
 
   WEIGHT_SAMPLE = %w(3т. 5т. 10т. 15т. 20т.)
   VOLUME_SAMPLE = %w(до\ 50\ кубов. 86\ кубов. 96\ кубов. 120\ кубов.)
