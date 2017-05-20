@@ -27,6 +27,7 @@ mkdir -p shared/sockets
 mv config/database.yml.production config/database.yml
 RAILS_ENV=production bundle install
 RAILS_ENV=production rake db:setup
+sudo chmod -R 777 /home/trucking/web_app/
 
 # Установка зависимостей
 # Запуск миграций и свойственных для приложения конфигураций
