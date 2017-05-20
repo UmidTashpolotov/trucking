@@ -24,6 +24,7 @@ cd ~
 tar -xvzf $package_name -C web_app # Распаковка приложения
 cd web_app
 mkdir -p shared/sockets
+mv config/database.yml.production config/database.yml
 RAILS_ENV=production bundle install
 RAILS_ENV=production rake db:setup
 
