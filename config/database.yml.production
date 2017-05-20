@@ -9,3 +9,10 @@ production:
  username: web_app
  password: <%= ENV['WEB_APP_DATABASE_PASSWORD'] %>
  database: db/production
+
+# traccar gps server db
+traccar_db:
+ <<: *default
+ database: traccar
+ user: traccar
+ password: <%= ENV['TRACCAR_DATABASE_PASSWORD'] %>
