@@ -27,5 +27,5 @@ echo "copy complete"
 
 ssh -i ${ssh_key} ${host} << EOL
 chmod +x apply_update.sh
-sudo ./apply_update.sh ${instance_name} ${package_name}
+./apply_update.sh ${package_name}
 EOL
