@@ -25,6 +25,14 @@ class Car < ApplicationRecord
     !device.positions.last.blank?
   end
 
+  def has_tracker_and_imei_blank
+    has_tracker? && imei.blank?
+  end
+
+  def has_tracker_and_imei_exist
+    @car.has_tracker? && !car.imei.blank?
+  end
+
   protected
 
   def nil_if_blank
