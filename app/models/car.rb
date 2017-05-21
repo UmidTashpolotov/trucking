@@ -30,7 +30,7 @@ class Car < ApplicationRecord
   end
 
   def has_tracker_and_imei_exist
-    @car.has_tracker? && !car.imei.blank?
+    has_tracker? && !imei.blank?
   end
 
   protected
