@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 set -e
@@ -14,17 +15,15 @@ mkdir -p web_app
 tar -czvf ${HOME}/old_build/old_build.tar.gz ${HOME}/web_app/
 
 cd web_app
-tar -xvf ${HOME}/$package_name # Распаковка приложения
+tar -xvf $package_name # Распаковка приложения
 mkdir -p shared/sockets
 mv config/database.yml.production config/database.yml
 RAILS_ENV=production bundle install
-RAILS_ENV=production rake db:setup
-# sudo chmod -R 777 /home/trucking/web_app/
-
-# Установка зависимостей
-# Запуск миграций и свойственных для приложения конфигураций
+RAILS_ENV=production rake db:migrate
 
 # Запуск сервисов
+cd ~
 sudo ./services_start.sh
 
-# Зачистка, удаление этого скрипта и архива
+rm $package_name
+rm -- "$0"
