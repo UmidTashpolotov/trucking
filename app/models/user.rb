@@ -19,12 +19,20 @@ class User < ApplicationRecord
     self.role == 'admin'
   end
 
+  def inactive?
+    !active?
+  end
+
   def worker?
     self.role == 'worker'
   end
 
   def customer?
     self.role == 'customer'
+  end
+
+  def inactive_worker?
+    inactive? && worker?
   end
 
   def activate

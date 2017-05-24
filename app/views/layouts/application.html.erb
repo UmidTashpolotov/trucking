@@ -19,7 +19,13 @@
       <% elsif current_user.worker? %>
           <%= render 'layouts/worker_menu' %>
       <% end %>
-      <%= render 'layouts/application/complete_your_profile' if current_user.profile_uncomplete? %>
+      <% if current_user.profile_uncomplete? %>
+        <%= render 'layouts/application/complete_your_profile' %>
+      <% else %>
+        <% if current_user.inactive_worker? %>
+          <h3>Вы заполнили все необходимые поля. В ближайшее время администратор проверит ваши данные и активирует вас. Вы получите доступ к заказам после активизации!</h3>
+        <% end %>
+      <% end %>
   <% end %>
 
   <div class="container">
