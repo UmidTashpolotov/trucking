@@ -1,9 +1,16 @@
 class User < ApplicationRecord
+  before_validation :phone_number_format
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:phone]
 	validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
+
+  validates :phone, presence: true,
+                    numericality: true,
+                    uniqueness: true,
+                    length: { is: 12}
 
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy
@@ -15,8 +22,12 @@ class User < ApplicationRecord
 
   ROLES = %w[ customer worker ]
 
+  def phone_number_format
+    self.phone = '996' + self.phone.to_s
+  end
+
   def admin?
-    self.role == 'admin'
+    role == 'admin'
   end
 
   def inactive?
@@ -24,11 +35,11 @@ class User < ApplicationRecord
   end
 
   def worker?
-    self.role == 'worker'
+    role == 'worker'
   end
 
   def customer?
-    self.role == 'customer'
+    role == 'customer'
   end
 
   def inactive_worker?

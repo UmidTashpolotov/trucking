@@ -10,7 +10,7 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   customer = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
-  	phone: '0555 22 33' + "#{i}",
+  	phone: '555' + rand(100_000..999_999).to_s,
   	role: 'customer',
   	password: 'qweqwe', 
   	password_confirmation: 'qweqwe',
@@ -34,7 +34,7 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   worker = User.create!(
   	name: Faker::Name.first_name,
   	surname: Faker::Name.last_name,
-		phone: '777 22 33' + "#{i}",
+		phone: '666' + rand(100_000..999_999).to_s,
   	role: 'worker',
   	password: 'qweqwe',
   	password_confirmation: 'qweqwe',
