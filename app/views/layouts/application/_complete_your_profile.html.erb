@@ -1,12 +1,13 @@
 <% blank_fields = current_user.blank_fields %>
 <% value = 100 - blank_fields.count * 10 %>
-
-<div class="col-md-8 col-md-offset-2">
-  <h3><%= t('profile_complete_status')%> <%= value.to_s + '%' %></h3>
-  <h5> <%= t('fill_it')%> <%= blank_fields.map{ |key| t(key) }.join(', ') %> <%= link_to t('fill_in'), user_path(current_user)%> </h5>
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= value %>%;">
-      <%= value.to_s + '%' %>
-    </div>
-  </div>
+<div class='row'>	
+	<div class="col-md-11">
+	  <h3><%= t('profile_complete_status')%> <%= value.to_s + '%' %></h3>
+	  <h5> <%= t('fill_it')%> <%= blank_fields.map{ |key| t(key) }.join(', ') %> <%= link_to t('fill_in'), user_path(current_user)%> </h5>
+	  <div class="progress">
+	    <div class="progress-bar" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= value %>%;">
+	      <%= value.to_s + '%' %>
+	    </div>
+	  </div>
+	</div>
 </div>
