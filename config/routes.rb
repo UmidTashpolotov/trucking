@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :orders, except: [:edit, :update] do
+    collection do
+      get :my
+    end
     resources :comments
     resources :offers, only: :create
     member do

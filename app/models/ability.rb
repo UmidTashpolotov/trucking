@@ -36,6 +36,7 @@ class Ability
     elsif user.worker?
       can :manage, Car
       can :read, Order
+      can :my, Order
       can :offer, Order do |order|
         order.status == 'open' and user.active?
       end

@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <% if @orders.empty? %>
+        <h1>ВЫ ПОКА ЧТО НЕ ВЗЯЛИ НИ ОДИН ЗАКАЗ</h1>
+    <% else %>
+        <%= render @orders.reverse %>
+    <% end %>
+    <%= paginate @orders, :theme => 'twitter-bootstrap-3' %>
+  </div>
+</div>

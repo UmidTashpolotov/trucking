@@ -23,6 +23,10 @@ class OrdersController < ApplicationController
     @comment = Comment.new
   end
 
+  def my
+    @orders = Order.where(worker_id: current_user).page(params[:page]).per(10)
+  end
+
   def new
     @order = Order.new
     authorize! :create, @order
