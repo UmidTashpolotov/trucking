@@ -16,7 +16,6 @@ When(/^он оставит отзыв "([^"]*)" оценка "([^"]*)"$/) do |me
   fill_in('comment_body', with: message)
   select(rating)
   click_on('create_comment')
-  byebug
 end
 
 When(/^отзыв "([^"]*)" оценка "([^"]*)" будет виден на странице заказа$/) do |message, rating|
@@ -40,7 +39,12 @@ When(/^клиент заходит в систему$/) do
   click_on('log_in_button')
 end
 
-When(/^перейдёт на страницу просмотра выполненного заказа$/) do
+When(/^заходит на страницу просмотра выполненного заказа$/) do
   visit('/')
+  click_on('Информация')
+end
+
+When(/^водитель перейдёт на страницу просмотра завершённого заказа$/) do
+  visit('/orders/my')
   click_on('Информация')
 end
