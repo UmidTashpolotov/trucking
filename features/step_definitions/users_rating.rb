@@ -16,6 +16,7 @@ When(/^он оставит отзыв "([^"]*)" оценка "([^"]*)"$/) do |me
   fill_in('comment_body', with: message)
   select(rating)
   click_on('create_comment')
+  byebug
 end
 
 When(/^отзыв "([^"]*)" оценка "([^"]*)" будет виден на странице заказа$/) do |message, rating|
@@ -29,4 +30,17 @@ When(/^водитель заходит в систему$/) do
   fill_in('Телефон', with: @worker.phone)
   fill_in('Пароль', with: @worker.password)
   click_on('log_in_button')
+end
+
+When(/^клиент заходит в систему$/) do
+  visit('/')
+  click_on('log_in')
+  fill_in('Телефон', with: @customer.phone)
+  fill_in('Пароль', with: @customer.password)
+  click_on('log_in_button')
+end
+
+When(/^перейдёт на страницу просмотра выполненного заказа$/) do
+  visit('/')
+  click_on('Информация')
 end
