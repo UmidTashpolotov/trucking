@@ -2,5 +2,5 @@
 <%= simple_form_for [@order, @comment] do |f| %>
     <%= f.input :body %>
     <%= f.input :rating, collection: 1..5, default: 1 %>
-    <%= f.submit %>
+    <%= f.submit id: 'create_comment' %>
 <% end %>
