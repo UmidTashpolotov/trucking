@@ -32,3 +32,8 @@ When(/^он удалит своё предложение$/) do
   click_on('Информация')
   click_on('delete_offer')
 end
+
+
+When(/^у перевозчика есть предложение$/) do
+  @offer = create(:offer, order: @order, user: @user, about: rand(10_000..99_000))
+end
