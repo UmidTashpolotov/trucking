@@ -96,4 +96,12 @@ class User < ApplicationRecord
     worker? || !cars.blank?
   end
 
+  def check_phone
+    update_attribute(:phone_checked, true)
+  end
+
+  def uncheck_phone
+    update_attribute(:phone_checked, false)
+  end
+
 end
