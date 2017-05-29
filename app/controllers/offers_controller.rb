@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   load_and_authorize_resource
   def create
     @order = Order.find(params[:order_id])
@@ -9,7 +9,7 @@ class OffersController < ApplicationController
     @offer.order = @order
     @offer.status = 'new'
   	if @offer.save
-  		redirect_to :back
+      redirect_back(fallback_location: root_path)
   	else
   		redirect_to root_path
   	end
@@ -31,7 +31,7 @@ class OffersController < ApplicationController
     authorize! :destroy, @offer
     @offer = Offer.find(params[:id])
     @offer.destroy if @offer.user == current_user
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def accept
@@ -41,7 +41,7 @@ class OffersController < ApplicationController
     @offer.accept
     @order.in_progress
     @order.update(worker: @offer.user)
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def reject
@@ -51,7 +51,7 @@ class OffersController < ApplicationController
     @offer.reject
     @order.open
     @order.update(worker: nil)
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

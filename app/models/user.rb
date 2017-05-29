@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_validation :phone_number_format
+  before_save :generate_sms_code
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -97,11 +98,15 @@ class User < ApplicationRecord
   end
 
   def check_phone
-    update_attribute(:phone_checked, true)
+    update_attribute :phone_checked, true
   end
 
   def uncheck_phone
-    update_attribute(:phone_checked, false)
+    update_attribute :phone_checked, false
+  end
+
+  def generate_sms_code
+    write_attribute(:sms_code, rand(1000..9999).to_s)
   end
 
 end

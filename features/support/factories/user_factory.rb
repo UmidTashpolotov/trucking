@@ -7,6 +7,7 @@ FactoryGirl.define do
     password { 'qweqwe' }
     password_confirmation { 'qweqwe' }
     active { true }
+    phone_checked { true }
 
     factory :worker do
       role { 'worker' }

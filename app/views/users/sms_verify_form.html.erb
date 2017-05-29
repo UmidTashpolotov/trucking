@@ -1,0 +1,5 @@
+<%= current_user.sms_code %>
+<%= form_tag sms_verify_users_path do %>
+    <%= text_field_tag :sms_code_input %>
+    <%= submit_tag 'check' %>
+<% end  %>

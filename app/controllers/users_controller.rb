@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def sms_verify_form; end
+
+  def sms_verify
+    if params[:sms_code_input] == current_user.sms_code
+      current_user.check_phone
+      redirect_to my_profile_path, notice: 'Phone number confirmed'
+    else
+      redirect_to sms_verify_form_users_path, notice: 'Bad input'
+    end
+  end
+
   private
 
   def user_params
