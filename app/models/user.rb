@@ -23,7 +23,7 @@ class User < ApplicationRecord
   ROLES = %w[ customer worker ]
 
   def phone_number_format
-    self.phone = '996' + self.phone.to_s
+    self.phone = '996' + self.phone.to_s if self.phone.length != 12
   end
 
   def admin?
