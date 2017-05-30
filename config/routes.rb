@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       post :sms_verify
       get :sms_verify_form
+      post :send_sms_code
     end
   end
   resources :cars, only: [:create, :edit, :update, :destroy, :show]

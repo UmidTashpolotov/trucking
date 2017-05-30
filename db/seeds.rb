@@ -14,7 +14,8 @@ transports = ['до 800кг', '1.5 тонны', '3 тонны', '5 тонн', '1
   	role: 'customer',
   	password: 'qweqwe', 
   	password_confirmation: 'qweqwe',
-		active: true)
+		active: true,
+  	phone_checked: true)
 
   order = Order.create!(
   	about: Faker::Lorem.sentence,

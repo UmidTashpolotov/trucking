@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_validation :phone_number_format
-  before_save :generate_sms_code
+  before_save :generate_sms_code, :generate_nikita_id
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -107,6 +107,10 @@ class User < ApplicationRecord
 
   def generate_sms_code
     write_attribute(:sms_code, rand(1000..9999).to_s)
+  end
+
+  def generate_nikita_id
+    write_attribute(:nikita_id, SecureRandom.hex(12))
   end
 
 end

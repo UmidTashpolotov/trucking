@@ -1,5 +1,6 @@
 <%= current_user.sms_code %>
 <%= form_tag sms_verify_users_path do %>
     <%= text_field_tag :sms_code_input %>
-    <%= submit_tag 'check' %>
+    <%= submit_tag 'Проверить' %>
 <% end  %>
+<%= link_to 'Отправить код', send_sms_code_users_path, method: :post %>

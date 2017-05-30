@@ -18,7 +18,7 @@ class Ability
       can :read, Order do |order|
         order.user == user
       end
-      can :create, Order
+      can :create, Order if user.phone_checked?
       can :close, Order do |order|
         order.user == user and order.status == 'open'
       end

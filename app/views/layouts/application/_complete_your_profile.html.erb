@@ -6,7 +6,8 @@
     <h5>
       <% routes = {'name' => edit_path, 'surname' => edit_path, 'car' => add_car_path, 'document' => new_document_path} %>
       <%= t('fill_it') %>
-      <%= raw blank_fields.map{ |blank_field| link_to(t(blank_field), routes[blank_field]) }.join(', ') %>
+      <%= raw blank_fields.map{ |blank_field| link_to(t(blank_field), routes[blank_field]) }.join(', ') %> <br>
+      <%= link_to 'Подтвердите номер телефона', sms_verify_form_users_path unless current_user.phone_checked?%>
 
     </h5>
     <div class="progress">

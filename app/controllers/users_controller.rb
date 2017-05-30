@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'net/http'
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
