@@ -29,7 +29,10 @@
         <tbody>
         <% @users.reverse.each do |user| %>
             <tr>
-              <td><%= link_to user.phone, user_path(user) %></td>
+              <td><%= link_to user.phone, user_path(user) %>
+                <%= '<span class="glyphicon glyphicon-phone text-success"></span>'.html_safe if user.phone_checked? %>
+                <%= '<span class="glyphicon glyphicon-phone text-danger"></span>'.html_safe  if  !user.phone_checked? %>
+              </td>
               <td><%= user.surname %></td>
               <td><%= link_to user.name, user_path(user) %></td>
               <td>
@@ -44,43 +47,20 @@
                       <i class="glyphicon glyphicon-ok"></i>
                   <% end %>
                 <% end %>
+                <% unless user.phone_checked?  %>
+                    <%= link_to check_phone_user_path(user), method: :post, class: 'btn btn-xs btn-success' do %>
+                        <i class="glyphicon glyphicon-phone text-success"></i>
+                    <% end %>
+                <% end  %>
               </td>
             </tr>
         <% end %>
         </tbody>
       </table>
+      <span class="glyphicon glyphicon-phone text-success"></span> - Номер телефона подтвержден <br>
+      <span class="glyphicon glyphicon-phone text-danger"></span> - Номер телефона не подтвержден <br>
     </div>
     </div>
     <%= paginate @users, :theme => 'twitter-bootstrap-3' %>
-    <!--Пагинация, сортировка-->
-    <!--<div class="panel-footer">
-      <div class="col-xs-3">
-        <div class="dataTables_info" id="example_info">Showing 51 - 60 of 100 total results</div>
-      </div>
-      <div class="col-xs-6">
-        <div class="dataTables_paginate paging_bootstrap">
-          <ul class="pagination pagination-sm" style="margin:0 !important">
-            <li class="prev disabled"><a href="#">← Previous</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li class="next disabled"><a href="#">Next → </a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
-          10 <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" style="min-width: 0px ">
-          <li><a href="#">5</a></li>
-          <li class="active"><a href="#">10</a></li>
-          <li><a href="#">15</a></li>
-          <li><a href="#">15</a></li>
-        </ul>
-        <span>items per page </span>
-      </div>
-    </div>-->
   </div>
 </div>

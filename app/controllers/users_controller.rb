@@ -75,6 +75,12 @@ class UsersController < ApplicationController
     </message>'
   end
 
+  def check_phone
+    user = User.find(params[:id])
+    user.check_phone
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def user_params

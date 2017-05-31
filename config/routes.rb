@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       get :sms_verify_form
       post :send_sms_code
     end
+    member do
+      post :check_phone
+    end
   end
   resources :cars, only: [:create, :edit, :update, :destroy, :show]
 
