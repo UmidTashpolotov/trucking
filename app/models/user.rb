@@ -110,7 +110,7 @@ class User < ApplicationRecord
   end
 
   def generate_nikita_id
-    write_attribute(:nikita_id, SecureRandom.hex(12))
+    write_attribute(:nikita_id, SecureRandom.hex(12).to_s)
   end
 
 end

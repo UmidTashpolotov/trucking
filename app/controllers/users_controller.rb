@@ -36,6 +36,45 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_sms_code
+    if user_session['last_sms_time'].blank?
+      user_session['last_sms_time'] = Time.now
+      sms_sender
+      redirect_to sms_verify_form_users_path
+    elsif !user_session['last_sms_time'].blank? && (Time.now - user_session['last_sms_time'].to_datetime).to_i > 3600
+      user_session['last_sms_time'] = Time.now
+      sms_sender
+      redirect_to sms_verify_form_users_path
+    else
+      redirect_to sms_verify_form_users_path, notice: 'После отправки последнего смс прошло меньше часа'
+    end
+  end
+
+  def sms_sender
+    xml_string = xml_string_for_sms_send
+    uri = URI.parse 'http://smspro.nikita.kg/api/message'
+    request = Net::HTTP::Post.new uri.path
+    request.body = xml_string
+    request.content_type = 'text/xml'
+    response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    xml_doc = Nokogiri::XML(response.body)
+    @status = xml_doc.css('status').first.text
+    message = xml_doc.css('message').text
+    @status == '0' ? flash[:notice] = 'СМС успешно отправлено' : flash[:danger] = message
+  end
+
+  def xml_string_for_sms_send
+    '<?xml version="1.0" encoding="UTF-8"?>
+    <message>
+    <login>xak</login>
+    <pwd>testpassword</pwd>
+    <id>' + current_user.nikita_id + '</id>
+    <sender>996555355666</sender>
+    <text>' + current_user.sms_code + '</text>
+    <phones><phone>' + current_user.phone + '</phone></phones>
+    </message>'
+  end
+
   private
 
   def user_params

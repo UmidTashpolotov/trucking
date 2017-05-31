@@ -3,4 +3,4 @@
     <%= text_field_tag :sms_code_input %>
     <%= submit_tag 'Проверить' %>
 <% end  %>
-<%= link_to 'Отправить код', send_sms_code_users_path, method: :post %>
+<%= link_to 'Отправить код', send_sms_code_users_path, method: :post unless @status == '0'%>
