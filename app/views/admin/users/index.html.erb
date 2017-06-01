@@ -43,7 +43,7 @@
                     <i class="glyphicon glyphicon-trash"></i>
                 <% end %>
                 <% unless user.active? %>
-                  <%= link_to activate_admin_user_path(user), method: :post, class: 'btn btn-xs btn-success' do %>
+                  <%= link_to activate_admin_user_path(user), method: :post, id: 'user_activated',class: 'btn btn-xs btn-success' do %>
                       <i class="glyphicon glyphicon-ok"></i>
                   <% end %>
                 <% end %>

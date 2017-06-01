@@ -16,6 +16,15 @@
               <td><%= @user.role %></td>
             </tr>
             <tr>
+              <td>Статус</td>
+              <td><% if @user.inactive? %>
+                    <small>Не активирован</small>
+                  <% else %>
+                    <small>Активирован</small>
+                  <% end %>
+              </td>
+            </tr>
+            <tr>
               <td><b>Рейтинг</b></td>
               <td><b>4.5</b></td>
             </tr>
@@ -28,10 +37,8 @@
               <td>06/23/2013</td>
             </tr>
             <tr>
-
-            <td>Телефон</td>
-            <td><%= @user.phone %>
-            </td>
+              <td>Телефон</td>
+              <td><%= @user.phone %></td>
             </tr>
             </tbody>
           </table>
