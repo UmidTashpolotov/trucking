@@ -48,7 +48,7 @@
                   <% end %>
                 <% end %>
                 <% unless user.phone_checked?  %>
-                    <%= link_to check_phone_user_path(user), method: :post, class: 'btn btn-xs btn-success' do %>
+                    <%= link_to check_phone_user_path(user), method: :post, class: 'btn btn-xs btn-success btn-phone-confirm' do %>
                         <i class="glyphicon glyphicon-phone text-success"></i>
                     <% end %>
                 <% end  %>

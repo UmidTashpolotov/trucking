@@ -10,3 +10,11 @@ When(/^введет в поле 'секретный код' код получе�
   fill_in('Секретный код', with: User.last.sms_code)
   click_on('phone_check_button')
 end
+
+When(/^нажмет на кнопку ручного подтверждения номера телефона напротив пользователя "([^"]*)"$/) do |phone|
+  find(:xpath, "//*[contains(text(), '#{phone}')]/../..//a[contains(@class,'btn btn-xs btn-success btn-phone-confirm')]").click
+end
+
+When(/^номер телефона "([^"]*)" станет проверенным$/) do |phone|
+  find(:xpath, "//*[contains(text(), '#{phone}')]/..//span[contains(@class, 'glyphicon glyphicon-phone text-success')]")
+end
