@@ -1,14 +1,9 @@
 When(/^в системе есть неактивированный перевозчик с номером "([^"]*)"$/) do |phone|
-  create(:worker, phone: phone, active: false)
+  @user = create(:worker, phone: phone, active: false)
 end
 
 When(/^он зайдет на страницу личного профиля$/) do
-  visit('/')
-  click_on('log_in')
-  fill_in('Телефон', with: '996555777888')
-  fill_in('Пароль', with: 'qweqwe')
-  click_on('log_in_button')
-  visit('/my_profile/')
+  visit('/my_profile')
 end
 
 When(/^он увидит надпись "([^"]*)"$/) do |inactive|

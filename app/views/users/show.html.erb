@@ -47,8 +47,8 @@
     </div>
     <% if @user == current_user %>
       <div class="panel-footer">
-        <%= link_to 'Редактировать имя или телефон', edit_path, class: 'btn btn-success' %>
-        <%= link_to 'Изменить пароль', edit_user_registration_path(current_user), class: 'btn btn-success' %>
+        <%= link_to 'Редактировать имя', edit_path, class: 'btn btn-success' %>
+        <%= link_to 'Изменить телефон и пароль', edit_user_registration_path, class: 'btn btn-success' %>
         <%= link_to 'Добавить документы', documents_path, class: 'btn btn-info' if can? :read, Document %>
         <%= link_to 'Добавить машину', add_car_path, class: 'btn btn-info', id: 'add_car' if can? :create, Car %>
       </div>

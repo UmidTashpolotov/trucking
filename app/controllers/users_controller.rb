@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to my_profile_path, notice: 'Your profile was successfully updated.' }
+        format.html { redirect_to my_profile_path, notice: 'Ваш профиль успешно обновлен' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -25,14 +25,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def sms_verify_form; end
+  def sms_verify_form
+    redirect_to my_profile_path if current_user.phone_checked?
+  end
 
   def sms_verify
     if params[:sms_code_input] == current_user.sms_code
       current_user.check_phone
-      redirect_to my_profile_path, notice: 'Phone number confirmed'
+      redirect_to my_profile_path, notice: 'Номер телефона подтвержден'
     else
-      redirect_to sms_verify_form_users_path, notice: 'Bad input'
+      redirect_to sms_verify_form_users_path, notice: 'Неверный код'
     end
   end
 
@@ -40,11 +42,9 @@ class UsersController < ApplicationController
     if user_session['last_sms_time'].blank?
       user_session['last_sms_time'] = Time.now
       sms_sender
-      redirect_to sms_verify_form_users_path
     elsif !user_session['last_sms_time'].blank? && (Time.now - user_session['last_sms_time'].to_datetime).to_i > 3600
       user_session['last_sms_time'] = Time.now
       sms_sender
-      redirect_to sms_verify_form_users_path
     else
       redirect_to sms_verify_form_users_path, notice: 'После отправки последнего смс прошло меньше часа'
     end
@@ -61,6 +61,7 @@ class UsersController < ApplicationController
     @status = xml_doc.css('status').first.text
     message = xml_doc.css('message').text
     @status == '0' ? flash[:notice] = 'СМС успешно отправлено' : flash[:danger] = message
+    redirect_back(fallback_location: root_path)
   end
 
   def xml_string_for_sms_send

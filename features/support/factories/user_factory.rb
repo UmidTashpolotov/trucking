@@ -9,6 +9,10 @@ FactoryGirl.define do
     active { true }
     phone_checked { true }
 
+    after(:create) do |model, evaluator|
+      model.instance_variable_set(:@my_ivar, evaluator.sms_code)
+    end
+
     factory :worker do
       role { 'worker' }
     end

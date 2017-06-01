@@ -21,7 +21,7 @@
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
             <p class="navbar-text">
-              <%= t 'hello' %>, <%= link_to current_user.phone, class: 'navbar-link' %>
+              <%= t 'hello' %>, <%= link_to current_user.phone, my_profile_path, class: 'navbar-link' %>
             </p>
             <ul class="nav navbar-nav">
               <li class="dropdown">
@@ -40,6 +40,7 @@
               <li><%= link_to (t 'sign_in'), new_user_session_path, id: 'log_in' %></li>
             </ul>
         <% end %>
+      </ul>
     </div>
   </div>
 </nav>
