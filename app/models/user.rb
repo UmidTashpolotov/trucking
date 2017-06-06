@@ -2,7 +2,8 @@ class User < ApplicationRecord
   include PgSearch
   pg_search_scope :search_everywhere,
                   against: %i[phone name surname],
-                  using: { tsearch: { prefix: true } }
+                  using: { tsearch: { prefix: true },
+                           trigram: { :threshold => 0.1 } }
   before_validation :phone_number_format
   before_save :generate_sms_code, :generate_nikita_id
 
