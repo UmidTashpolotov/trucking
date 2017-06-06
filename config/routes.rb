@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :users do
       collection do
         get :inactive
+        get :search_results
       end
       member do
         post :activate

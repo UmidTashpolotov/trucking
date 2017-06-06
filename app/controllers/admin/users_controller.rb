@@ -16,7 +16,12 @@ class Admin::UsersController < AdminController
               else
                 User.all
               end
-    @users = @users.page(params[:page]).per(10).order('created_at ASC')
+    @users = @users.page(params[:page]).per(10).order('created_at DESC')
+  end
+
+  def search_results
+    @users = User.search_everywhere(params[:query])
+    @users = @users.page(params[:page]).per(10).order('created_at DESC')
   end
 
   def inactive
