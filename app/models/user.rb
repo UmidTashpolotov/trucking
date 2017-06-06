@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_everywhere,
+                  against: %i[phone name surname],
+                  using: { tsearch: { prefix: true } }
   before_validation :phone_number_format
   before_save :generate_sms_code, :generate_nikita_id
 
@@ -11,7 +15,7 @@ class User < ApplicationRecord
   validates :phone, presence: true,
                     numericality: true,
                     uniqueness: true,
-                    length: { is: 12}
+                    length: { is: 12 }
 
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy

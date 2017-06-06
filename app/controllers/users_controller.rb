@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to my_profile_path, notice: 'Ваш профиль успешно обновлен' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html {redirect_to my_profile_path, notice: 'Ваш профиль успешно обновлен'}
+        format.json {render :show, status: :ok, location: @user}
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     request = Net::HTTP::Post.new uri.path
     request.body = xml_string
     request.content_type = 'text/xml'
-    response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    response = Net::HTTP.new(uri.host, uri.port).start {|http| http.request request}
     xml_doc = Nokogiri::XML(response.body)
     @status = xml_doc.css('status').first.text
     message = xml_doc.css('message').text
