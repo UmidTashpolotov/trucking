@@ -21,6 +21,11 @@
 					<% end %>
         </li>
         <li class="active">
+          <%= link_to new_bid_path do %>
+              <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-stats"></span>РАССЧИТАТЬ СТОИМОСТЬ
+          <% end %>
+        </li>
+        <li class="active">
         	<%= link_to my_profile_path, id: 'my_profile' do %>
 					  <span style="font-size:16px;" class="pull-right hidden-xs showopacity ic-user glyphicon glyphicon-user"></span>МОИ ПРОФИЛЬ
 					<% end %>
