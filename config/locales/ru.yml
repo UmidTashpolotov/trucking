@@ -30,6 +30,7 @@ ru:
   car_create: Ваша машина добавлена
   car_update: Ваша машина изменена
   car_destroy: Ваша машина удалена
+  bid_created: Ваша заявка была принята. Наш менеджер свяжется с вами.
 
   activerecord:
     models:

@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606082310) do
+ActiveRecord::Schema.define(version: 20170607100759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "bids", force: :cascade do |t|
+    t.string   "from_city"
+    t.string   "to_city"
+    t.string   "weight"
+    t.string   "volume"
+    t.string   "phone"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cars", force: :cascade do |t|
     t.string   "about"

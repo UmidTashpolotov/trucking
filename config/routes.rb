@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :cars, only: [:create, :edit, :update, :destroy, :show]
+  resources :bids, only: [:new, :create]
 
   get :my_profile, to: 'users#show'
   scope 'my_profile' do

@@ -1,0 +1,13 @@
+<%= simple_form_for Bid.new do |f| %>
+    <%= f.input :from_city, placeholder: 'Откуда', label: false %>
+    <%= f.input :to_city, placeholder: 'Куда', label: false %>
+    <%= f.input :weight, placeholder: 'Вес', label: false %>
+    <%= f.input :volume, placeholder: 'Объём', label: false %>
+    <% if current_user.blank? %>
+        <%= f.input :phone, placeholder: 'Телефон', label: false %>
+    <% else %>
+        <%= f.hidden_field :phone, value: current_user.phone %>
+    <% end %>
+
+    <%= f.submit 'Рассчитать', class: 'btn btn-primary', id: 'create_bid' %>
+<% end %>
