@@ -26,3 +26,29 @@ When(/^он создаст заявку$/) do
 
   click_on('create_bid')
 end
+
+When(/^в приложении есть менеджер$/) do
+  @user = create(:manager)
+end
+
+When(/^в приложении есть новая заявка$/) do
+  create(:bid_offer)
+end
+
+When(/^он перейдёт в раздел заявок$/) do
+  visit('/admin/bids')
+end
+
+When(/^увидит кнопку 'Закрыть'$/) do
+  assert page.has_content?('Закрыть')
+end
+
+When(/^он нажмёт кнопку закрыть$/) do
+  click_on('Закрыть')
+end
+
+When(/^заявка сменит статус на 'old'$/) do
+  visit('/admin/bids')
+  click_on('Рассмотренные')
+  assert page.has_content?('old')
+end

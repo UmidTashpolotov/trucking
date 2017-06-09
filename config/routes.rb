@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'orders#index'
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => {registrations: 'registrations'}
   resources :users, only: [:show, :update] do
     collection do
       post :sms_verify
@@ -38,8 +38,19 @@ Rails.application.routes.draw do
     end
   end
   resources :documents
+
   namespace :admin do
     root 'users#index'
+
+    resources :bids do
+      collection do
+        get :search_results
+      end
+      member do
+        get :close
+      end
+    end
+
     resources :users do
       collection do
         get :inactive

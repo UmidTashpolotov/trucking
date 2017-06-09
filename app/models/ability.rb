@@ -6,6 +6,10 @@ class Ability
     if user.admin?
       can :manage, :all
 
+    elsif user.manager?
+      can :read, :all
+      can :close, Bid
+
 
     elsif user.customer?
       can :read, Offer

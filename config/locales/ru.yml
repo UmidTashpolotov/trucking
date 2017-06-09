@@ -1,4 +1,5 @@
 ru:
+  close: Закрыть
   hello: Привет
   signin_as_driver: "Войти как водитель"
   become_driver: "Стать перевозчиком"

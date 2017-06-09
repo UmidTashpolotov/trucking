@@ -13,9 +13,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def check_role
     role = params[:user][:role]
-    # redirect_to :back
-    unless ['worker', 'customer'].include?(role)
-      redirect_to new_user_registration_path, alert: "ACCESS DENIED !"
+    unless User::REGISTRABLE_ROLES.include?(role)
+      redirect_to new_user_registration_path, alert: "ACCESS DENIED!"
     end
   end
 

@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20170609082010) do
     t.string   "weight"
     t.string   "volume"
     t.string   "phone"
-    t.string   "status",     default: "open"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "status",     default: "new"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "cars", force: :cascade do |t|

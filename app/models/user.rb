@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:phone]
-	validates :role, inclusion: { in: ['customer', 'admin', 'worker'] }
+	validates :role, inclusion: { in: ['customer', 'admin', 'worker', 'manager'] }
 
   validates :phone, presence: true,
                     numericality: true,
@@ -28,12 +28,19 @@ class User < ApplicationRecord
 
   ROLES = %w[ customer worker ]
 
+  REGISTRABLE_ROLES = %w(customer worker)
+  CREATABLE_ROLES = %w(admin manager customer worker)
+
   def phone_number_format
     self.phone = '996' + self.phone.to_s if self.phone.length != 12
   end
 
   def admin?
     role == 'admin'
+  end
+
+  def manager?
+    role == 'manager'
   end
 
   def inactive?

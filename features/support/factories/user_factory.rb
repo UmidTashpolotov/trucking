@@ -21,6 +21,10 @@ FactoryGirl.define do
       role { 'customer' }
     end
 
+    factory :manager do
+      role { 'manager' }
+    end
+
     factory :admin do
       role { 'admin' }
     end

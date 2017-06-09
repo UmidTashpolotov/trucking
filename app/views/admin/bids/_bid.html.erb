@@ -1,0 +1,11 @@
+<tr>
+  <td><%= bid.from_city %></td>
+  <td><%= bid.to_city %></td>
+  <td><%= bid.weight %></td>
+  <td><%= bid.volume %></td>
+  <td><%= bid.phone %></td>
+  <td><%= content_tag(:b, bid.status) %></td>
+  <td>
+    <%= link_to t('close'), close_admin_bid_path(bid) if bid.new? %>
+  </td>
+</tr>

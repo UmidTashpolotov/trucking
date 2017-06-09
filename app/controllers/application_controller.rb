@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
   def set_project_version
     @project_version = File.read("VERSION") if File.exist?("VERSION")
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "У вас нет доступа"
+    redirect_back(fallback_location: root_path)
+  end
 end
