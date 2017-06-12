@@ -25,10 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def sms_verify_form
-    redirect_to my_profile_path if current_user.phone_checked?
-  end
-
   def sms_verify
     if params[:sms_code_input] == current_user.sms_code
       current_user.check_phone

@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.role == 'admin'
       admin_root_path
-    elsif !current_user.phone_checked?
-      sms_verify_form_users_path
     else
       root_path
     end
