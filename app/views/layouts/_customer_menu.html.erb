@@ -16,9 +16,11 @@
 					<% end %>
         </li>
         <li class="active">
-        	<%= link_to new_order_path do %>
-					  <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>НОВЫЙ ЗАКАЗ
-					<% end %>
+          <% if can? :create, Order  %>
+            <%= link_to new_order_path do %>
+              <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>НОВЫЙ ЗАКАЗ
+            <% end %>
+          <% end %>
         </li>
         <li class="active">
           <%= link_to new_bid_path, id: 'new_bid' do %>

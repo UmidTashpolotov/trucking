@@ -1,0 +1,10 @@
+<h3>Подтвердите номер телефона</h3>
+<%= 'Вы не сможете создавать заказы пока не подтвердите номер телефона' if current_user.customer? %>
+<%= 'Вы не сможете оставлять предложения пока не подтвердите номер телефона' if current_user.worker? %>
+<%= form_tag sms_verify_users_path do %>
+    <%= label_tag :sms_code_input, 'Секретный код' %>
+    <%= text_field_tag :sms_code_input%>
+    <%= submit_tag 'Проверить', class: 'btn btn-default', id: 'phone_check_button' %>
+<% end  %>
+<%= link_to 'Отправить код', send_sms_code_users_path, method: :post%> <br>
+<%= link_to 'Изменить номер телефона', edit_user_registration_path %>

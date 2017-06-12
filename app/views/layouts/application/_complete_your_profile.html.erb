@@ -6,9 +6,7 @@
     <h5>
       <% routes = {'name' => edit_path, 'surname' => edit_path, 'car' => add_car_path, 'document' => new_document_path} %>
       <%= t('fill_it') %>
-      <%= raw blank_fields.map{ |blank_field| link_to(t(blank_field), routes[blank_field]) }.join(', ') %> <br>
-      <%= link_to 'Подтвердите номер телефона', sms_verify_form_users_path unless current_user.phone_checked?%>
-
+      <%= raw blank_fields.map{ |blank_field| link_to(t(blank_field), routes[blank_field]) }.join(', ') %>
     </h5>
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= value %>%;">

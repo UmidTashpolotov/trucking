@@ -20,6 +20,7 @@
       <% elsif current_user.worker? %>
           <%= render 'layouts/worker_menu' %>
       <% end %>
+      <%= render 'layouts/application/phone_number_confirm' unless current_user.phone_checked? %>
       <% if current_user.profile_uncomplete? %>
           <%= render 'layouts/application/complete_your_profile' %>
       <% else %>
