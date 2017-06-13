@@ -6,8 +6,8 @@ ru:
   hello: Привет
   signin_as_driver: "Войти как водитель"
   become_driver: "Стать перевозчиком"
-  sign_up: "Зарегистрироваться"
-  sign_in: "Войти на сайт"
+  sign_up: "регистрация"
+  sign_in: "войти"
   forgot_your_password: "Забыли пароль?"
   send_me_reset_password_instructions: "Восстановить пароль"
   some_options: "Какие-то опции"

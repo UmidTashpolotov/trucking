@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Верстка</title>
+  <style>
+    body{
+      background-color:#0A0A0A;
+      padding:0;
+      margin:0;
+    }
+    #wrapper{
+      width: 100%;
+      height:700px;
+      margin:0 auto;
+      background-image:url(/images/start.png);
+      background-repeat:no-repeat;
+      background-position:center 0;
+      padding:0;
+    }
+
+    #head{
+      z-index:99999;
+      position:fixed;
+    }
+
+    #head, #head #opacity{
+      width:100%;
+      height:70px;
+    }
+
+    #head > #opacity{
+      position:absolute;
+      top:0;
+      background-color:#85979F;
+      opacity:0.5;
+      z-index:1;
+    }
+
+    #head ul{
+      z-index:999;
+      width:500px;
+      overflow:hidden;
+      list-style:none;
+      margin:0;
+      float:left;
+      padding:25px;
+    }
+
+    #head ul li{
+      float:left;
+      margin-right:30px;
+    }
+    #head ul li a{
+      font-family:Verdana;
+      color:#fff;
+      text-decoration:none;
+      outline:0;
+    }
+    #head ul li a:hover{
+      text-decoration:underline;
+    }
+    #head #reglog{
+      font-family:Verdana;
+      float:right;
+      color:#fff;
+      padding:20px;
+      right:0;
+      z-index:9999;
+    }
+    #headWrapper{
+      width:890px;
+      height:auto;
+      overflow:hidden;
+      position:absolute;
+      z-index:9999;
+      margin:0 auto;
+      left: 0;
+      right: 0;
+    }
+    #reglog span{
+      display:inline-block;
+      width:120px;
+      text-align:center;
+      padding:3px;
+      margin:0;
+      border:2px solid #1C7EA7;
+      cursor:pointer;
+    }
+    #reglog span:hover{
+      color:#1C7EA7;
+      background-color:#fff;
+    }
+
+    #reglog span:first-child{
+      border-top-left-radius:16px;
+      border-bottom-left-radius:16px;
+    }
+    #reglog span:last-child{
+      border-left:0px;
+      border-top-right-radius:16px;
+      border-bottom-right-radius:16px;
+    }
+    #body{
+      position:absolute;
+      top:200px;
+      width:787px;
+      border:0px solid #fff;
+      margin:0 auto;
+      overflow:hidden;
+      top:200px;
+      left:0;
+      right:0;
+    }
+    #body p:first-child{
+      padding-top:40px;
+      display:inline-block;
+      float:left;
+      line-height:100px;
+      font-size:35px;
+      border:0px solid #fff;
+      width:385px;
+      height:423px;
+      color:#fff;
+      margin:0;
+      font-weight:bold;
+      text-transform:uppercase;
+      font-family:verdana, arial,sans-serif;
+    }
+    #body div:last-child{
+      border-radius:20px;
+      margin-left:425px;
+      width:360px;
+      height:460px;
+      border:0px solid #fff;
+      background-color:#0B303F;
+      opacity:0.9;
+      z-index:0;
+    }
+    #body div input{
+      border:0;
+      outline:0;
+      font-size:20px;
+      margin:20px 20px;
+      border-radius:12px;
+      width:285px;
+      height:50px;
+      z-index:20;
+    }
+    #body div input:last-child{
+      z-index:20;
+      width:320px;
+      cursor:pointer;
+    }
+
+    .new_bid {
+      padding-top: 3px;
+    }
+  </style>
+</head>
+<body>
+<div id="wrapper">
+  <div id="head">
+    <div id="opacity"></div>
+    <div id="headWrapper">
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">О нас</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Прайс</a></li>
+      </ul>
+      <div id="reglog">
+        <div>
+          <span>
+            <%= link_to (t 'sign_up'), new_user_registration_path, id: 'sign_up' %>
+          </span><span>
+          <%= link_to (t 'sign_in'), new_user_session_path, id: 'log_in' %>
+        </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="body">
+    <p>
+      Лучшие<br/> предложения в<br/> мире<br/> грузоперевозок
+    </p>
+    <div>
+      <%= render 'bids/form' %>
+    </div>
+  </div>
+</div>
+</body>
+</html>
