@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  authenticated :user do
+    root 'orders#index'
+  end
+
   root 'pages#index'
+
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :users, only: [:show, :update] do
     collection do
