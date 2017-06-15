@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       post :sms_verify
       get :sms_verify_form
       post :send_sms_code
+      get :reset_password_form
+      post :reset_password
     end
     member do
       post :check_phone
