@@ -4,12 +4,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :phone, required: true, autofocus: true %>
+    <%= f.input :phone, required: true, placeholder: '+(996)-555-123-456' %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, (t "send_me_reset_password_instructions") %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#user_phone").mask("+(996)-000-000-000");
+    });
+</script>
 
 <%= render "devise/shared/links" %>
