@@ -11,3 +11,9 @@
 
     <%= f.submit 'Рассчитать', class: 'btn btn-primary', id: 'create_bid' %>
 <% end %>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#bid_phone").mask("+(996)-000-000-000");
+    });
+</script>

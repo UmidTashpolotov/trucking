@@ -13,11 +13,6 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse">
-      <% unless @project_version.blank? %>
-          <ul class="nav navbar-nav">
-            <li><span class="label label-info"><%= 'build ' + @project_version %></span></li>
-          </ul>
-      <% end %>
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
             <p class="navbar-text">

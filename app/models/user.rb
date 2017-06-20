@@ -2,8 +2,8 @@ class User < ApplicationRecord
   include PgSearch
   pg_search_scope :search_everywhere,
                   against: %i[phone name surname],
-                  using: { tsearch: { prefix: true },
-                           trigram: { :threshold => 0.1 } }
+                  using: {tsearch: {prefix: true},
+                          trigram: {:threshold => 0.1}}
   before_validation :phone_number_format
   before_save :generate_sms_code, :generate_nikita_id
 
@@ -11,12 +11,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:phone]
-	validates :role, inclusion: { in: ['customer', 'admin', 'worker', 'manager'] }
+  validates :role, inclusion: {in: ['customer', 'admin', 'worker', 'manager']}
 
   validates :phone, presence: true,
-                    numericality: true,
-                    uniqueness: true,
-                    length: { is: 12 }
+            numericality: true,
+            uniqueness: true,
+            length: {is: 12}
 
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy
@@ -32,7 +32,8 @@ class User < ApplicationRecord
   CREATABLE_ROLES = %w(admin manager customer worker)
 
   def phone_number_format
-    self.phone = '996' + self.phone.to_s if self.phone.length != 12
+    self.phone = self.phone.tr('+()-', '')
+    self.phone = '996' + self.phone if self.phone.size < 12
   end
 
   def admin?
@@ -97,7 +98,7 @@ class User < ApplicationRecord
 
   def cars_with_gps
     return [] unless worker_with_cars
-    cars.reject { |car| car.imei.blank? }
+    cars.reject {|car| car.imei.blank?}
   end
 
   def search_devices
@@ -125,4 +126,8 @@ class User < ApplicationRecord
     write_attribute(:nikita_id, SecureRandom.hex(12).to_s)
   end
 
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    where(phone: conditions[:phone].tr('+()-', '')).first
+  end
 end
