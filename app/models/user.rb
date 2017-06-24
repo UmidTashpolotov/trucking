@@ -130,4 +130,8 @@ class User < ApplicationRecord
     conditions = warden_conditions.dup
     where(phone: conditions[:phone].tr('+()-', '')).first
   end
+
+  def rating
+    average = Comment.where(:to_user_id => self.id).average(:rating)
+  end
 end
