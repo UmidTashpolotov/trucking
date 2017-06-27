@@ -19,7 +19,7 @@
         <section>
           <i class="glyphicon glyphicon-user"></i><%= "#{order.user.name} #{order.user.surname}" %>
           <i class="glyphicon glyphicon-calendar"></i><%= order.created_at.strftime("%Y-%m-%d") %>
-          <i class="glyphicon glyphicon-eye-open"></i><%= rand(0..100) %>
+          <i class="glyphicon glyphicon-eye-open"></i><%= order.number_of_views %>
           <%= link_to 'Информация', order_path(order), class: 'btn btn-success btn-sm pull-right', id: ('show_order_'+order.id.to_s) %>
         </section>
       </div>

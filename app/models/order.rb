@@ -37,4 +37,9 @@ class Order < ApplicationRecord
   def has_comment_from(user)
     comments.exists?(from_user: user)
   end
+
+  def add_view_number
+    update_attribute :number_of_views, number_of_views + 1
+  end
+
 end

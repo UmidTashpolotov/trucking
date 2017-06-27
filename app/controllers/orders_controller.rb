@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+    @order.add_view_number
     authorize! :read, @order
     @offer = Offer.new
     @comment = Comment.new
@@ -69,6 +70,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:about, :from_city, :to_city, :cargo, :price,
                                   :weight, :volume, :transport, :departure_date,
                                   :payment_method, :temperature_regime,
-                                  :loading_type)
+                                  :loading_type, :number_of_views)
   end
 end

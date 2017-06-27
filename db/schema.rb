@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609082010) do
+ActiveRecord::Schema.define(version: 20170627053356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20170609082010) do
     t.string   "temperature_regime"
     t.string   "loading_type"
     t.integer  "worker_id"
+    t.integer  "number_of_views",    default: 0
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
     t.index ["worker_id"], name: "index_orders_on_worker_id", using: :btree
   end
