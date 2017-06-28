@@ -18,6 +18,8 @@ class User < ApplicationRecord
             uniqueness: true,
             length: {is: 12}
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :cars, dependent: :destroy
   has_many :documents, dependent: :destroy
   has_many :offers, dependent: :destroy
