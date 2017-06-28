@@ -45,6 +45,7 @@ ru:
       order: Заказ
     attributes:
       user:
+        avatar: Аватарка
         role: Роль
         name: Имя
         surname: Фамилия
