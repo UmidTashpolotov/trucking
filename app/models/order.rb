@@ -42,4 +42,13 @@ class Order < ApplicationRecord
     update_attribute :number_of_views, number_of_views + 1
   end
 
+  def find_coordinates
+    url = URI("https://maps.googleapis.com/maps/api/directions/json")
+    url.query = URI.encode_www_form({ origin: from_city, destination: to_city })
+    res = Net::HTTP.get_response(url)
+    json_data = res.body if res.is_a?(Net::HTTPSuccess)
+    data = JSON.parse(json_data)
+    data["routes"][0]["overview_polyline"]["points"]
+  end
+
 end
