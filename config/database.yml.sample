@@ -1,0 +1,34 @@
+default: &default
+ adapter: postgresql
+# input your username for postgreSQL here
+ user:
+# input your password for postgreSQL here or leave it blank if you dont setup one
+ password:
+ pool: 5
+ timeout: 5000
+
+development:
+ <<: *default
+ database: db/development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+ <<: *default
+ database: db/test
+
+production:
+ <<: *default
+ database: db/production
+
+cucumber:
+ <<: *test
+
+# traccar gps server db
+traccar_db:
+ adapter: postgresql
+ host:
+ database:
+ user:
+ password:
