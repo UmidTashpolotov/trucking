@@ -1,35 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="well">
-        <h2 class="text-warning">ЗАКАЗ</h2>
-        <p><span class="label label-success"><%= @order.status %></span></p>
-        <ul>
-          <li>Откуда: <%= @order.from_city %></li>
-          <li>Куда:<%= @order.to_city %></li>
-          <li>Что: <%= @order.cargo %></li>
-          <li>Цена: <%= @order.price %></li>
-          <li>Вес: <%= @order.weight %></li>
-          <li>Объем: <%= @order.volume %></li>
-          <li>Тип транспорта: <%= @order.transport %></li>
-          <li>Дата отправки: <%= @order.departure_date %></li>
-          <li>Метод оплаты: <%= @order.payment_method %></li>
-          <li>Температурный режим: <%= @order.temperature_regime %></li>
-          <li>Метод погрузки: <%= @order.loading_type %></li>
-        </ul>
-        <p>Дополнительно: <%= @order.about %></p>
-        <%= link_to 'Удалить заказ', close_order_path(@order), id: 'close_order', method: :post if can? :close, @order %>
-        <%= link_to 'Завершить заказ', complete_order_path(@order), id: 'complete_order', method: :post if can? :complete, @order %>
-        <hr>
-        <%= render 'comments/form' if can? :comment, @order %>
-        <%= render @order.comments %>
-        <hr>
-        <% if can? :offer, @order and @order.offers.where(user: current_user).empty? %>
-            <h3>Предложите свою цену:</h3>
-            <%= render 'offers/form', order: @order %>
-        <% end %>
-        <hr>
-        <h1><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h1>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="row hidden-md hidden-lg"><h1 class="text-center" >Заказ</h1></div>
+
+        <div class="pull-left col-md-4 col-xs-12 thumb-contenido">
+          <img class="center-block img-responsive"
+               src="https://maps.googleapis.com/maps/api/staticmap?size=500x500&path=enc%3A<%= @order.find_coordinates %>&key=AIzaSyDrmZlm2IRmyAf7e-Zl6WCzRquP5zOgy7Y" />
+        </div>
+        <div class="">
+          <h1  class="hidden-xs hidden-sm">Заказ</h1>
+          <%= link_to 'Удалить заказ', close_order_path(@order), id: 'close_order', method: :post if can? :close, @order %>
+          <%= link_to 'Завершить заказ', complete_order_path(@order), id: 'complete_order', method: :post if can? :complete, @order %>
+          <h3>Из: <%= @order.from_city %>
+          В: <%= @order.to_city %></h3>
+          <h3>Груз: <%= @order.cargo %></h3>
+          <h3>Цена: <%= @order.price %></h3>
+          <hr>
+          Заказ создан: <%= @order.created_at.strftime("%Y-%m-%d") %><br>
+          Заказчик: <strong><%= link_to @order.user.name, user_path(@order.user)  %></strong>
+          <p>Статус заказа <span class="label label-success"><%= @order.status %></span></p>
+          <hr>
+          <h2>Дополнительно:</h2>
+          <ul>
+            <li>Вес: <%= @order.weight %></li>
+            <li>Объем: <%= @order.volume %></li>
+            <li>Тип транспорта: <%= @order.transport %></li>
+            <li>Дата отправки: <%= @order.departure_date %></li>
+            <li>Метод оплаты: <%= @order.payment_method %></li>
+            <li>Температурный режим: <%= @order.temperature_regime %></li>
+            <li>Метод погрузки: <%= @order.loading_type %></li>
+          </ul>
+          <p class="text-justify"><%= @order.about %></p></div>
+        <h2><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h2>
         <% if can? :read, @offer %>
             <% if @order.status =="open" %>
                 <% @offers = @order.offers.page(params[:page]).per(10)%>

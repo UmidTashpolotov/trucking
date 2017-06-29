@@ -48,7 +48,11 @@ class Order < ApplicationRecord
     res = Net::HTTP.get_response(url)
     json_data = res.body if res.is_a?(Net::HTTPSuccess)
     data = JSON.parse(json_data)
-    data["routes"][0]["overview_polyline"]["points"]
+    if data['routes'].blank?
+      nil
+    else
+      data['routes'][0]['overview_polyline']['points']
+    end
   end
 
 end

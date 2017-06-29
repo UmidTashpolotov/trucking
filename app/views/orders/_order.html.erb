@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <figure>
-          <img src="https://maps.googleapis.com/maps/api/staticmap?size=800x600&path=enc%3A<%= order.find_coordinates %>&key=AIzaSyDrmZlm2IRmyAf7e-Zl6WCzRquP5zOgy7Y" alt="">
+          <% if order.find_coordinates.nil? %>
+              <img src="images/map_error.png" alt="">
+          <% else %>
+              <img src="https://maps.googleapis.com/maps/api/staticmap?size=800x600&path=enc%3A<%= order.find_coordinates %>&key=AIzaSyDrmZlm2IRmyAf7e-Zl6WCzRquP5zOgy7Y" alt="">
+          <% end %>
         </figure>
       </div>
       <div class="col-sm-6 col-md-8">
