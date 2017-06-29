@@ -33,6 +33,12 @@
           </ul>
           <p class="text-justify"><%= @order.about %></p></div>
         <h2><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h2>
+        <%= render 'comments/form' if can? :comment, @order %>
+        <%= render @order.comments %>
+        <% if can? :offer, @order and @order.offers.where(user: current_user).empty? %>
+            <h3>Предложите свою цену:</h3>
+            <%= render 'offers/form', order: @order %>
+        <% end %>
         <% if can? :read, @offer %>
             <% if @order.status =="open" %>
                 <% @offers = @order.offers.page(params[:page]).per(10)%>
