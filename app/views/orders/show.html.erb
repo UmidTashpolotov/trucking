@@ -5,8 +5,12 @@
         <div class="row hidden-md hidden-lg"><h1 class="text-center" >Заказ</h1></div>
 
         <div class="pull-left col-md-4 col-xs-12 thumb-contenido">
-          <img class="center-block img-responsive"
+          <% if @order.find_coordinates.nil? %>
+              <img class="center-block img-responsive" src="/images/map_error.png" alt="">
+          <% else %>
+              <img class="center-block img-responsive"
                src="https://maps.googleapis.com/maps/api/staticmap?size=500x500&path=enc%3A<%= @order.find_coordinates %>&key=AIzaSyDrmZlm2IRmyAf7e-Zl6WCzRquP5zOgy7Y" />
+          <% end %>
         </div>
         <div class="">
           <h1  class="hidden-xs hidden-sm">Заказ</h1>
@@ -33,6 +37,7 @@
           </ul>
           <p class="text-justify"><%= @order.about %></p></div>
         <h2><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h2>
+        <br>
         <%= render 'comments/form' if can? :comment, @order %>
         <%= render @order.comments %>
         <% if can? :offer, @order and @order.offers.where(user: current_user).empty? %>
