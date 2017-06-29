@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       sms_sender(current_user.phone, current_user.sms_code, current_user.nikita_id)
       redirect_back(fallback_location: root_path)
     else
-      redirect_to sms_verify_form_users_path, notice: 'После отправки последнего смс прошло меньше часа'
+      redirect_back(fallback_location: root_path, notice: 'После отправки последнего смс прошло меньше часа')
     end
   end
 
