@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     request = Net::HTTP::Post.new uri.path
     request.body = xml_string
     request.content_type = 'text/xml'
-    response = Net::HTTP.new(uri.host, uri.port).start {|http| http.request request}
+    response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
     xml_doc = Nokogiri::XML(response.body)
     @status = xml_doc.css('status').first.text
     message = xml_doc.css('message').text
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     <login>xak</login>
     <pwd>testpassword</pwd>
     <id>' + nikita_id + '</id>
-    <sender>996555355666</sender>
+    <sender>trucking.kg</sender>
     <text>' + message + '</text>
     <phones><phone>' + phone + '</phone></phones>
     </message>'
