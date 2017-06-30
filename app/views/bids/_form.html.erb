@@ -1,4 +1,4 @@
-<%= simple_form_for Bid.new do |f| %>
+<%= simple_form_for @bid ||= Bid.new do |f| %>
     <%= f.input :from_city, placeholder: 'Откуда', label: false %>
     <%= f.input :to_city, placeholder: 'Куда', label: false %>
     <%= f.input :weight, placeholder: 'Вес', label: false %>
