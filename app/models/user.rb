@@ -114,6 +114,7 @@ class User < ApplicationRecord
 
   def check_phone
     update_attribute :phone_checked, true
+    activate if customer?
   end
 
   def uncheck_phone

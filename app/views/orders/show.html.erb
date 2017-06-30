@@ -27,13 +27,13 @@
           <hr>
           <h2>Дополнительно:</h2>
           <ul>
-            <li>Вес: <%= @order.weight %></li>
-            <li>Объем: <%= @order.volume %></li>
-            <li>Тип транспорта: <%= @order.transport %></li>
-            <li>Дата отправки: <%= @order.departure_date %></li>
-            <li>Метод оплаты: <%= @order.payment_method %></li>
-            <li>Температурный режим: <%= @order.temperature_regime %></li>
-            <li>Метод погрузки: <%= @order.loading_type %></li>
+            <li><b>Вес:</b> <%= @order.weight %></li>
+            <li><b>Объем:</b> <%= @order.volume %></li>
+            <li><b>Тип транспорта:</b> <%= @order.transport %></li>
+            <li><b>Дата отправки:</b> <%= @order.departure_date %></li>
+            <li><b>Метод оплаты:</b> <%= @order.payment_method %></li>
+            <li><b>Температурный режим:</b> <%= @order.temperature_regime %></li>
+            <li><b>Метод погрузки:</b> <%= @order.loading_type %></li>
           </ul>
           <p class="text-justify"><%= @order.about %></p></div>
         <h2><small class="pull-right">На заказ откликнулось: <%= @order.offers.count %></small></h2>
