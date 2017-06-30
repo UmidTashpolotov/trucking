@@ -1,6 +1,6 @@
-<h3>Оставьте комментарий о <%= @order.user.name %>:</h3>
+<h3>Оставьте комментарий о <%= current_user.worker? ? @order.user.name : @order.worker.name %>:</h3>
 <%= simple_form_for [@order, @comment] do |f| %>
-    <%= f.input :body %>
-    <%= f.input :rating, collection: 1..5, default: 1 %>
+    <%= f.input :body, label: 'Комментарий' %>
+    <%= f.input :rating, collection: 1..5, default: 1, label: 'Оценка' %>
     <%= f.submit id: 'create_comment' %>
 <% end %>
