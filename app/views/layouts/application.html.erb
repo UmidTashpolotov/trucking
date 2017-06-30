@@ -12,28 +12,35 @@
 
 <body>
 <div class="content">
-  <%= render 'layouts/application/navbar' %>
-
-  <% if user_signed_in? %>
-      <% if current_user.customer? %>
-          <%= render 'layouts/customer_menu' %>
-      <% elsif current_user.worker? %>
-          <%= render 'layouts/worker_menu' %>
-      <% end %>
-      <%= render 'layouts/application/phone_number_confirm' unless current_user.phone_checked? %>
-      <% if current_user.profile_uncomplete? %>
-          <%= render 'layouts/application/complete_your_profile' %>
-      <% else %>
-          <% if current_user.inactive_worker? %>
-              <h3>Вы заполнили все необходимые поля. В ближайшее время администратор проверит ваши данные и активирует
-                вас. Вы получите доступ к заказам после активизации!</h3>
-          <% end %>
-      <% end %>
-  <% end %>
-
   <div class="container">
+    <%= render 'layouts/application/navbar' %>
+
     <% flash.each do |type, message| %>
         <%= content_tag :div, message, class: "alert alert-#{type}" %>
+    <% end %>
+
+    <% if user_signed_in? %>
+        <% if current_user.customer? %>
+            <%= render 'layouts/customer_menu' %>
+        <% elsif current_user.worker? %>
+            <%= render 'layouts/worker_menu' %>
+        <% end %>
+
+        <% if current_user.profile_uncomplete? and current_user.phone_checked? %>
+            <%= render 'layouts/application/complete_your_profile' %>
+        <% else %>
+            <% if !current_user.profile_uncomplete? and current_user.inactive_worker? %>
+                <div class="alert alert-info">
+                  <h3>Вы заполнили все необходимые поля.</h3>
+                  В ближайшее время администратор проверит ваши данные и активирует
+                  вас.
+                  Вы получите доступ к заказам после активизации!
+                </div>
+            <% end %>
+        <% end %>
+
+        <%= render 'layouts/application/phone_number_confirm' unless current_user.phone_checked? %>
+
     <% end %>
 
     <%= yield %>

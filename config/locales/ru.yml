@@ -6,8 +6,8 @@ ru:
   hello: Привет
   signin_as_driver: "Войти как водитель"
   become_driver: "Стать перевозчиком"
-  sign_up: "регистрация"
-  sign_in: "войти"
+  sign_up: "Регистрация"
+  sign_in: "Войти"
   forgot_your_password: "Забыли пароль?"
   send_me_reset_password_instructions: "Восстановить пароль"
   some_options: "Какие-то опции"
@@ -35,6 +35,8 @@ ru:
   car_update: Ваша машина изменена
   car_destroy: Ваша машина удалена
   bid_created: Ваша заявка была принята. Наш менеджер свяжется с вами.
+  main_sign_up: "регистрация"
+  main_sign_in: "войти"
 
   activerecord:
     models:

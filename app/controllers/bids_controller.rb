@@ -8,7 +8,7 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_back(fallback_location: root_path, notice: t('bid_created'))
     else
-      redirect_to root_path, notice: 'Заполните все поля.'
+      redirect_back(fallback_location: root_path, notice: 'Заполните все поля.')
     end
   end
 
